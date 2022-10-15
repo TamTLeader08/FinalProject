@@ -1,0 +1,16 @@
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\bin\Debug\Winform_MP3.exe.config
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\bin\Debug\Winform_MP3.exe
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\bin\Debug\Winform_MP3.pdb
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\bin\Debug\Interop.WMPLib.dll
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\bin\Debug\AxInterop.WMPLib.dll
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.csproj.AssemblyReference.cache
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.csproj.SuggestedBindingRedirects.cache
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Interop.WMPLib.dll
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\AxInterop.WMPLib.dll
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.csproj.ResolveComReference.cache
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.MainForm.resources
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.Properties.Resources.resources
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.csproj.GenerateResource.cache
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.csproj.CoreCompileInputs.cache
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.exe
+D:\laptrinh\hocki3\laptrinhtrucquan\Test\Winform_MP3\Winform_MP3\obj\Debug\Winform_MP3.pdb
