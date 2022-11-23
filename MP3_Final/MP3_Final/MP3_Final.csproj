@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\DarkMode.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\Like.png" />
