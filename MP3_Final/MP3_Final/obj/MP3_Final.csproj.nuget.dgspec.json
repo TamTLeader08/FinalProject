@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\Final Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {}
+    "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {}
   },
   "projects": {
-    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\Final Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {
+    "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\Final Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
         "projectName": "MP3_Final",
-        "projectPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\Final Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\Final Project\\MP3_Final\\MP3_Final\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.6.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
