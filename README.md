@@ -4,6 +4,9 @@ This is School Project
 ```
 -Maximize/minimize window
 -Backend Code
+  + Volume
+  + Playlist
+  + Search
 -Animation code
 -File code
 -Dark mode
