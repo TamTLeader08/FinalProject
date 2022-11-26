@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\DarkMode.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\Like.png" />
+    <None Remove="Images\m1.jpg" />
+    <None Remove="Images\m2.png" />
+    <None Remove="Images\m3.jpg" />
+    <None Remove="Images\Mix.png" />
+    <None Remove="Images\Pause.png" />
+    <None Remove="Images\Replay.png" />
+    <None Remove="Images\search.png" />
+    <None Remove="Images\singer.jpg" />
+    <None Remove="Images\SkipNext.png" />
+    <None Remove="Images\SkipPrevious.png" />
+    <None Remove="Images\upload.png" />
+    <None Remove="Images\Volume.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\DarkMode.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\Like.png" />
+    <Resource Include="Images\m1.jpg" />
+    <Resource Include="Images\m2.png" />
+    <Resource Include="Images\m3.jpg" />
+    <Resource Include="Images\Mix.png" />
+    <Resource Include="Images\Pause.png" />
+    <Resource Include="Images\Replay.png" />
+    <Resource Include="Images\search.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\singer.jpg" />
+    <Resource Include="Images\SkipNext.png" />
+    <Resource Include="Images\SkipPrevious.png" />
+    <Resource Include="Images\upload.png" />
+    <Resource Include="Images\Volume.png" />
+  </ItemGroup>
+
+</Project>
