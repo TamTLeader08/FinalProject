@@ -59,7 +59,7 @@
                 </Button>
                 <Button Style="{StaticResource textButton}"
                         Margin="15,65,10,10">
-                    
+
                 </Button>
             </Grid>
         </Grid>
@@ -134,10 +134,10 @@
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Margin="10 0 0 -10">
                         <StackPanel Margin="10 0 0 10" Orientation="Horizontal">
-                            
+
                             <TextBlock Text="0:00" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
                             <TextBlock Text="3:57" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="270 0 0 0"/>
-                           
+
                         </StackPanel>
                         <Slider Width="317" Height="22" Margin="10 0 0 7"/>
 
@@ -156,8 +156,36 @@
                             </Button>
 
                             <Button Style="{StaticResource playerButton}">
-                                <Image Source="/Images/Pause.png"></Image>
+                                <!--<Icon:PackIconMaterial Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>-->
+                                <Image x:Name="PlayButton" Source="/Images/Pause.png" MouseLeftButtonDown="PlayButton_Click" Stretch="UniformToFill"/>
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                Storyboard.TargetName="MyAnimatedTransform"
+                Storyboard.TargetProperty="(RotateTransform.Angle)"
+                From="0.0" To="360" Duration="0:0:10" RepeatBehavior="0:5:0"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Button.Triggers>
+                            </Button>
 
+                            <Button Style="{StaticResource playerButton}">
+                                <Image x:Name="PauseButton" Source="/Images/Pause.png" MouseLeftButtonDown="PauseButton_Click" Visibility="Hidden"></Image>
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                Storyboard.TargetName="MyAnimatedTransform"
+                Storyboard.TargetProperty="(RotateTransform.Angle)"
+                DecelerationRatio="0.5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Button.Triggers>
                             </Button>
 
 
@@ -191,7 +219,10 @@
         <!--Right Section-->
         <StackPanel Grid.Column="2">
 
-            <Ellipse Width="200" Height="200" Margin="0 15 0 -10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Ellipse Width="200" Height="200" Margin="0 15 0 -10" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <RotateTransform x:Name="MyAnimatedTransform" Angle="0" />
+                </Ellipse.RenderTransform>
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="/Images/singer.jpg"/>
                 </Ellipse.Fill>
