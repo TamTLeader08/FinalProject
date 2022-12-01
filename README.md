@@ -11,3 +11,7 @@ This is School Project
 -File code
 -Dark mode
 ```
+#Current Progress
+-Fix UI
+-Add Code
+-Research more
