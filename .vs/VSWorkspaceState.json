@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MP3_Final",
+    "\\MP3_Final\\MP3_Final"
   ],
-  "SelectedNode": "\\Winform_MP3.sln",
+  "SelectedNode": "\\MP3_Final\\MP3_Final\\App.xaml",
   "PreviewInSolutionExplorer": false
 }

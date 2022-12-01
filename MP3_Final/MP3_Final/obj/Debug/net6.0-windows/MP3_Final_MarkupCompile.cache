@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\admin\Desktop\CSDL\New folder\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\
-MP3_Final
+C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\
+MP3_Final_b4gbgwap_wpftmp
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\admin\Desktop\CSDL\New folder\MP3_Final\MP3_Final\App.xaml
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
+C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\App.xaml
 21526651776
 
-4-1094471923
-196-999748088
+8881580736
+392-39698956
 MainWindow.xaml;UserControls\SongName.xaml;
 
-False
+True
 
