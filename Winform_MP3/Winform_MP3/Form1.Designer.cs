@@ -54,7 +54,7 @@
             this.mediaPlayer.Location = new System.Drawing.Point(16, 10);
             this.mediaPlayer.Name = "mediaPlayer";
             this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(677, 429);
+            this.mediaPlayer.Size = new System.Drawing.Size(677, 419);
             this.mediaPlayer.TabIndex = 0;
             // 
             // panel1

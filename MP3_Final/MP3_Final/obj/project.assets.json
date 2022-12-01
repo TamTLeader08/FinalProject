@@ -110,11 +110,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
       "projectName": "MP3_Final",
-      "projectPath": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\HDH\\New folder\\MP3_Final\\MP3_Final\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
