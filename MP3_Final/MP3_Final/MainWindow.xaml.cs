@@ -47,5 +47,17 @@ namespace MP3_Final
                 //mediaElement1.Play();
             }
         }
+
+        private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
+            {
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+            }
+            else
+            {
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
+            }
+        }
     }
 }

@@ -53,28 +53,34 @@
             <StackPanel Grid.Row="1">
                 <TextBlock Text="MORE OPTION" Margin="20 10 20 20" Foreground="#1fae7e" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin ="0 -10 0 0"  Height="50" >
-                    <Image Source="/Images/Volume.png" Width="50" Height="50" Margin="30 0 0 0"/>
+                    <Button Style="{StaticResource optionButton}">
+                        <materialDesign:PackIcon Kind="VolumeHigh" Style="{StaticResource optionButtonIcon}"/>
+                    </Button>
 
-                    <Slider Width="150" Height="22" Margin="10 5 0 0" />
+                    <Slider Width="150" Height="20" Margin="10 5 0 0" />
 
                 </StackPanel>
 
 
                 <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource IconButton}">
-                        <Image Source="/Images/DarkMode.png"></Image>
+                    
 
+                    <Button Style="{StaticResource optionButton}">
+                        <materialDesign:PackIcon Kind="Upload" Style="{StaticResource optionButtonIcon}"/>
                     </Button>
 
-                    <Button Style="{StaticResource IconButton}">
-                        <Image Source="/Images/upload.png"></Image>
-
+                    <Button Style="{StaticResource optionButton}">
+                        <materialDesign:PackIcon Kind="DeleteEmpty" Style="{StaticResource optionButtonIcon}"/>
                     </Button>
 
-                    <Button Style="{StaticResource IconButton}">
-                        <Image Source="/Images/delete.png"></Image>
-
+                    <Button x:Name="darkmodeBtn" Style="{StaticResource optionButton}" Click="darkmodeBtn_Click" >
+                        <Button.Resources>
+                            <materialDesign:PackIcon x:Key="Light" Kind="ShieldMoonOutline" Style="{StaticResource optionButtonIcon}"/>
+                            <materialDesign:PackIcon x:Key="Dark" Kind="ShieldMoon" Style="{StaticResource optionButtonIcon}"/>
+                        </Button.Resources>
+                        <DynamicResource ResourceKey="Light"/>
                     </Button>
+
 
                 </StackPanel>
             </StackPanel>
