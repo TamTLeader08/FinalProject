@@ -10,8 +10,11 @@ This is School Project
 -Animation code
 -File code
 -Dark mode
+-Playlist customize
 ```
 #Current Progress
+```
 -Fix UI
 -Add Code
 -Research more
+```
