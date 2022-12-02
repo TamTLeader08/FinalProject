@@ -66,7 +66,11 @@
                     
 
                     <Button Style="{StaticResource optionButton}">
-                        <materialDesign:PackIcon Kind="Upload" Style="{StaticResource optionButtonIcon}"/>
+                        <materialDesign:PackIcon Kind="FolderUpload" Style="{StaticResource optionButtonIcon}"/>
+                    </Button>
+
+                    <Button Style="{StaticResource optionButton}">
+                        <materialDesign:PackIcon Kind="FileUpload" Style="{StaticResource optionButtonIcon}"/>
                     </Button>
 
                     <Button Style="{StaticResource optionButton}">
