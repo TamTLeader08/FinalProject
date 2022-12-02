@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Eb0LWHh/feyFt4gMLBwue1lYOEjQKEXctBHiYpQgmRIz1D8ln6Hfql5YVVaWyMsFtPKBK5nYobyLo3EpiFEEPw==",
+  "dgSpecHash": "RTtr8IdAwkkaA7NIlJHSnwk9JvTLBe8q3wuzigv55E/cYBit5M042ztCzwDO1B5WL/YkjqKmaH5meCO7TKNbHg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\baohe\\Source\\Repos\\TamTLeader08\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\baohe\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
-    "C:\\Users\\baohe\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512"
   ],
   "logs": []
 }

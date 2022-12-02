@@ -25,23 +25,38 @@ namespace MP3_Final
         {
             InitializeComponent();
         }
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        private void heartbtn_Click(object sender, RoutedEventArgs e)
         {
-            PlayButton.Visibility = Visibility.Hidden;
+            heartbtn.Foreground = (heartbtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
+        }
 
-            if(PauseButton.Visibility == Visibility.Hidden)
+        private void pausebtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (pausebtn.Content == pausebtn.FindResource("Pause"))
             {
-                PauseButton.Visibility = Visibility.Visible;
+                pausebtn.Content = pausebtn.FindResource("Play");
+                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                s.Begin();
+                //mediaElement1.Pause();
+            }
+            else
+            {
+                pausebtn.Content = pausebtn.FindResource("Pause");
+                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                s.Begin();
+                //mediaElement1.Play();
             }
         }
 
-        private void PauseButton_Click(object sender, MouseButtonEventArgs e)
+        private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
         {
-            PauseButton.Visibility = Visibility.Hidden;
-
-            if (PlayButton.Visibility == Visibility.Hidden)
+            if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
             {
-                PlayButton.Visibility = Visibility.Visible;
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+            }
+            else
+            {
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
             }
         }
     }
