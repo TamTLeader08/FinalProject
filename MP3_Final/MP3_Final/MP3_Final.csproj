@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IconApp\Spotify.ico" />
     <None Remove="Images\DarkMode.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\Like.png" />
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="IconApp\Spotify.ico" />
     <Resource Include="Images\DarkMode.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\Like.png" />

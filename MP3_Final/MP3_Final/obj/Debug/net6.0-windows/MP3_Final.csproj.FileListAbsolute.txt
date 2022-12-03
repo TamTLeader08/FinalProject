@@ -132,8 +132,6 @@ C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\De
 C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.pdb
 C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
 C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
-<<<<<<< Updated upstream
-=======
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.AssemblyReference.cache
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\UserControls\SongName.g.cs
@@ -162,32 +160,31 @@ C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\ob
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.CopyComplete
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
 C:\Users\admin\Desktop\New folder\BranchMain\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.AssemblyReference.cache
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\UserControls\SongName.g.cs
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final_MarkupCompile.cache
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final_MarkupCompile.lref
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\refint\MP3_Final.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.pdb
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.exe
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.deps.json
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.runtimeconfig.json
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.pdb
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MaterialDesignColors.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\App.baml
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\UserControls\SongName.baml
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.g.resources
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.AssemblyInfoInputs.cache
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.AssemblyInfo.cs
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.CoreCompileInputs.cache
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.CopyComplete
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
-C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
->>>>>>> Stashed changes
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.exe
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.deps.json
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.runtimeconfig.json
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.dll
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MP3_Final.pdb
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.AssemblyReference.cache
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\UserControls\SongName.g.cs
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final_MarkupCompile.cache
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final_MarkupCompile.lref
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\App.baml
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\UserControls\SongName.baml
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.g.resources
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.AssemblyInfoInputs.cache
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.AssemblyInfo.cs
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.CoreCompileInputs.cache
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.csproj.CopyComplete
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.dll
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\refint\MP3_Final.dll
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.pdb
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
+C:\Users\baohe\source\repos\GiaBao\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll

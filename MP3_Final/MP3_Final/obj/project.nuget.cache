@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< Updated upstream
-  "dgSpecHash": "Eb0LWHh/feyFt4gMLBwue1lYOEjQKEXctBHiYpQgmRIz1D8ln6Hfql5YVVaWyMsFtPKBK5nYobyLo3EpiFEEPw==",
+  "dgSpecHash": "bFiUIxRYAQFjg0B/UQ489QD/l4wx06DyeQxyl4caDAZekEn/5bQwSxM0cPV/JPpBRSMyBSHHrbZm4ZIKm5A/Ag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\baohe\\Source\\Repos\\TamTLeader08\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
-=======
-  "dgSpecHash": "uislYmagd6Jf+ZTe/tsnD/1/125SduvTiwfUycajt5H0iwc4gqBWHVtpXw2Gizij1wvejLc+/+PQLyzYGaf4Pg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\baohe\\Source\\Repos\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
->>>>>>> Stashed changes
+  "projectFilePath": "C:\\Users\\baohe\\source\\repos\\GiaBao\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\baohe\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
     "C:\\Users\\baohe\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512"
