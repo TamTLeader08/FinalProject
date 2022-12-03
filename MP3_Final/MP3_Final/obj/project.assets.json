@@ -104,24 +104,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+      "projectUniqueName": "D:\\GIT\\School Project\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
       "projectName": "MP3_Final",
-      "projectPath": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\New folder\\BranchMain\\FinalProject\\MP3_Final\\MP3_Final\\obj\\",
+      "projectPath": "D:\\GIT\\School Project\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "D:\\GIT\\School Project\\FinalProject\\MP3_Final\\MP3_Final\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

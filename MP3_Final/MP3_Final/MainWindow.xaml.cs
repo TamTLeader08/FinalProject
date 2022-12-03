@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,19 @@ namespace MP3_Final
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
             }
+        }
+    }
+    public static class Linqhelper /* class extention */
+    {
+        /*
+         * Muc dich: them 1 ham de get file extention. Dung cho load folder
+         */
+        public static IEnumerable<FileInfo> GetFilesByExtentions(this DirectoryInfo dir, params string[] exts) /* https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/params */
+        {
+            if (exts == null)
+                throw new ArgumentNullException("extensions");
+            IEnumerable<FileInfo> files = dir.EnumerateFiles();
+            return files.Where(f => exts.Contains(f.Extension));/*=> la 1 lambda expressions. Xem them tai https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions */
         }
     }
 }
