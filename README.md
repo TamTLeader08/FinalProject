@@ -14,7 +14,9 @@ This is School Project
 ```
 #Current Progress
 ```
--Fix UI
+-Media Timer
+-Improve UI
+-Fix UI (Optional)
 -Add Code
 -Research more
 ```
