@@ -188,3 +188,4 @@ C:\Users\admin\Desktop\HDH\New folder\Theduy\FinalProject\MP3_Final\MP3_Final\ob
 C:\Users\admin\Desktop\HDH\New folder\Theduy\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.pdb
 C:\Users\admin\Desktop\HDH\New folder\Theduy\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
 C:\Users\admin\Desktop\HDH\New folder\Theduy\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
+C:\Users\admin\Desktop\HDH\New folder\Theduy\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\MP3_Final_Content.g.cs

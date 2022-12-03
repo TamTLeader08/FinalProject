@@ -7,9 +7,8 @@
         xmlns:uc="clr-namespace:MP3_Final.UserControls" 
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
         Icon ="/IconApp/Spotify.ico"
-        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" Height="720" Width="1080">
+        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" Height="720" Width="1080" MinWidth="1080" MinHeight="720">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -95,15 +94,15 @@
 
         <StackPanel Grid.Column="1" Background="White">
             
-            <Grid Margin="0 10 0 0" Width="520" HorizontalAlignment="Center">
+            <Grid Margin="0 10 0 0" Width="auto" HorizontalAlignment="Stretch" >
                 <materialDesign:ColorZone
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Stretch"
                     
                     Padding="8,4,8,4"
                     Panel.ZIndex="1"
                     materialDesign:ElevationAssist.Elevation="Dp2"
                     CornerRadius="22"
-                    Mode="Standard" Width="520" Height="40" VerticalAlignment="Top">
+                    Mode="Standard" Width="auto" Height="40" VerticalAlignment="Top">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -130,7 +129,7 @@
 
 
 
-            <Border CornerRadius="20" Margin="0 15 0 0" Height="480">
+            <Border CornerRadius="10" Margin="0 15 0 0" Height="480">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#30ad9a" Offset="0"/>
@@ -154,107 +153,125 @@
                     </Border>
 
                     <!--Music List-->
-                    <StackPanel Margin="30,15,30,1" Grid.ColumnSpan="2">
-                        <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                        <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                        <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                        <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                        <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                        <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                        <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                        <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                        <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                        <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                        <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+
+                    <ScrollViewer   Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        
+                        <StackPanel Margin="30,15,30,1">
+                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
+                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
+                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
+                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
+                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                        </StackPanel>
+                    </ScrollViewer>
 
 
-                    </StackPanel>
+
                 </Grid>
             </Border>
 
 
             <!--Player-->
-            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  CornerRadius="20" Margin="0 15 0 0" Height="108">
+            <Border Grid.Row="1" Grid.Column="1" CornerRadius="20" Margin="0 15 0 0" Height="auto">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#30ad9a" Offset="1"/>
                         <GradientStop Color="#18c274" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,-22">
-                    <Ellipse Width="60" Height="62" Margin="10 0 0 20" RenderTransformOrigin="0.487,0.072">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Width="60" Height="62" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5"  RenderTransformOrigin="0.487,0.072">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="/Images/m2.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
 
-                    <StackPanel VerticalAlignment="Center" Margin="10 0 0 20">
-                        <TextBlock Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
+                            <TextBlock Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                            <TextBlock Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
                     </StackPanel>
 
 
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Margin="10 0 0 -10">
-                        <StackPanel Margin="10 0 0 10" Orientation="Horizontal">
+                    <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Stretch"  Margin="10 0 0 -10">
+                        <Grid Margin="0 0 10 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Grid.Column="1" Text="3:57"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
 
-                            <TextBlock Text="0:00" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
-                            <TextBlock Text="3:57" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="270 0 0 0"/>
+                        </Grid>
+                            <StackPanel Margin="10 0 0 10" Orientation="Horizontal">
 
-                        </StackPanel>
-                        <Slider Name="slider_seek" Foreground="#ffffff" Width="317" Height="22" Margin="-2 0 0 0"/>
-
-
-                        <StackPanel Margin="5 0 0 0" Orientation="Horizontal">
-
-                            <Button Style="{StaticResource playerButton}">
-                                <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
+                            
+                            </StackPanel>
+                            <Slider Name="slider_seek" Foreground="#ffffff" Width="auto" Height="auto" Margin="-2 0 0 0"/>
 
 
-                            <Button Style="{StaticResource playerButton}">
-                                <materialDesign:PackIcon Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
+                            <StackPanel Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Stretch">
 
-                            <Button x:Name="pausebtn" Style="{StaticResource playerButton}" Click="pausebtn_Click" >
-                                <Button.Resources>
-                                    <materialDesign:PackIcon x:Key="Play" Kind="Play" Style="{StaticResource playerButtonIcon}"/>
-                                    <materialDesign:PackIcon x:Key="Pause" Kind="Pause" Style="{StaticResource playerButtonIcon}"/>
-                                    <Storyboard x:Key="spinellipse">
-                                        <DoubleAnimation
+                                <Button Style="{StaticResource playerButton}">
+                                    <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
+                                </Button>
+
+                                <Button Style="{StaticResource playerButton}">
+                                    <materialDesign:PackIcon Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
+                                </Button>
+
+                                <Button x:Name="pausebtn" Style="{StaticResource playerButton}" Click="pausebtn_Click" >
+                                    <Button.Resources>
+                                        <materialDesign:PackIcon x:Key="Play" Kind="Play" Style="{StaticResource playerButtonIcon}"/>
+                                        <materialDesign:PackIcon x:Key="Pause" Kind="Pause" Style="{StaticResource playerButtonIcon}"/>
+                                        <Storyboard x:Key="spinellipse">
+                                            <DoubleAnimation
                                                 Storyboard.TargetName="MyAnimatedTransform"
                                                 Storyboard.TargetProperty="(RotateTransform.Angle)"
                                                 From="0.0" To="360" Duration="0:0:10" RepeatBehavior="0:5:0"/>
-                                    </Storyboard>
-                                    <Storyboard x:Key="stopellipse">
-                                        <DoubleAnimation
+                                        </Storyboard>
+                                        <Storyboard x:Key="stopellipse">
+                                            <DoubleAnimation
                                                 Storyboard.TargetName="MyAnimatedTransform"
                                                 Storyboard.TargetProperty="(RotateTransform.Angle)"
                                                 DecelerationRatio="0.5" To="360" />
-                                    </Storyboard>
-                                </Button.Resources>
-                                <DynamicResource ResourceKey="Play"/>
-                            </Button>
+                                        </Storyboard>
+                                    </Button.Resources>
+                                    <DynamicResource ResourceKey="Play"/>
+                                </Button>
 
-                            <Button Style="{StaticResource playerButton}">
-                                <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
+                                <Button Style="{StaticResource playerButton}">
+                                    <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
+                                </Button>
 
+                                <Button x:Name="replaybtn" Style="{StaticResource playerButton}">
+                                    <materialDesign:PackIcon Kind="Replay" Style="{StaticResource playerButtonIcon}"/>
+                                </Button>
 
-
-                            <Button x:Name="replaybtn" Style="{StaticResource playerButton}">
-                                <materialDesign:PackIcon Kind="Replay" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
-
-                            <Button x:Name="heartbtn" Style="{StaticResource playerButton}" Click="heartbtn_Click">
-                                <materialDesign:PackIcon Kind="Heart" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
-
-
-
+                                <Button x:Name="heartbtn" Style="{StaticResource playerButton}" Click="heartbtn_Click">
+                                    <materialDesign:PackIcon Kind="Heart" Style="{StaticResource playerButtonIcon}"/>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
 
-                </StackPanel>
+
+                </Grid>
+                
             </Border>
         </StackPanel>
 

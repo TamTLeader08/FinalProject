@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,10 @@
     <None Remove="Images\SkipPrevious.png" />
     <None Remove="Images\upload.png" />
     <None Remove="Images\Volume.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
