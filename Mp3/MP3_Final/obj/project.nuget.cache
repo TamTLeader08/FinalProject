@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TWu1nokRmT4tdI1xQHYornPiM7AJZ7gJaFcK31D29d8YljR3DHGGpCEfFDxdJrbI9yTaWeCnQ7GKkPzHka9p5g==",
+  "success": true,
+  "projectFilePath": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512"
+  ],
+  "logs": []
+}
