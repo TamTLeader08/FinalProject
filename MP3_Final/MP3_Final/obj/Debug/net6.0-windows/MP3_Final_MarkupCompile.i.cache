@@ -4,17 +4,29 @@
 winexe
 C#
 .cs
+<<<<<<< Updated upstream
 C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\
+=======
+C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\obj\Debug\net6.0-windows\
+>>>>>>> Stashed changes
 MP3_Final
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+<<<<<<< Updated upstream
 C:\Users\baohe\Source\Repos\TamTLeader08\FinalProject\MP3_Final\MP3_Final\App.xaml
 21526651776
 
 6167515023
 196-19849478
+=======
+C:\Users\baohe\Source\Repos\FinalProject\MP3_Final\MP3_Final\App.xaml
+21526651776
+
+6167515023
+196-920289752
+>>>>>>> Stashed changes
 MainWindow.xaml;UserControls\SongName.xaml;
 
-True
+False
 

@@ -44,5 +44,6 @@ namespace MP3_Final
                 PlayButton.Visibility = Visibility.Visible;
             }
         }
+
     }
 }
