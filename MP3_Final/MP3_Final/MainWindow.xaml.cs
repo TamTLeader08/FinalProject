@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,35 +24,41 @@ namespace MP3_Final
     /// </summary>
     public partial class MainWindow : Window
     {
-        // static variants
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
         List<string> files = new List<string>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
-        // methods
         public MainWindow()
         {
             InitializeComponent();
-            LoadVolume();
+        }
+        private void heartbtn_Click(object sender, RoutedEventArgs e)
+        {
+            heartbtn.Foreground = (heartbtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
-            /*OpenFileDialog fileDialog = new OpenFileDialog()
+            if (pausebtn.Content == pausebtn.FindResource("Pause"))
             {
-                Multiselect = false,
-                DefaultExt = ".mp3",
-            };
-            if (fileDialog.ShowDialog() == true)
+                pausebtn.Content = pausebtn.FindResource("Play");
+                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                s.Begin();
+                //mediaElement1.Pause();
+            }
+            else
             {
-                fileName = fileDialog.FileName;
-                media.Open(new Uri(fileName));
-                media.Play();
-            }// code cua huy 
-            */
-            //var dialog = new Microsoft.Win32.OpenFileDialog();
-            /* // code open 1 file
-             dialog.Multiselect= false;
+                pausebtn.Content = pausebtn.FindResource("Pause");
+                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                s.Begin();
+                //mediaElement1.Play();
+            }
+        }
+        private void FileUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            // code open 1 file
+            dialog.Multiselect = false;
             dialog.DefaultExt = ".mp3,.flac,.ogg,.wav"; // Default file extension
             dialog.Filter = "All Media Files|*.wav;*.flac;*.aac;*.wma;*.wmv;*.avi;*.mpg;*.mpeg;*.m1v;*.mp2;*.mp3;*.mpa;*.mpe;*.m3u;*.mp4;*.mov;*.3g2;*.3gp2;*.3gp;*.3gpp;*.m4a;*.cda;*.aif;*.aifc;*.aiff;*.mid;*.midi;*.rmi;*.mkv;*.WAV;*.AAC;*.WMA;*.WMV;*.AVI;*.MPG;*.MPEG;*.M1V;*.MP2;*.MP3;*.MPA;*.MPE;*.M3U;*.MP4;*.MOV;*.3G2;*.3GP2;*.3GP;*.3GPP;*.M4A;*.CDA;*.AIF;*.AIFC;*.AIFF;*.MID;*.MIDI;*.RMI;*.MKV"; // Filter files by extension 
 
@@ -60,17 +66,23 @@ namespace MP3_Final
             if (dialog.ShowDialog() == true)
             {
                 fileName = dialog.FileName;
-            }*/
+            }
+            //code duoi la chay nhac
+            media.Open(new Uri(fileName));
+            media.Play();
+        }
 
-            // code open nhieu file trong folder hay con goi la open folder
+        private void FolderUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                dialog.RootFolder= Environment.SpecialFolder.MyDocuments;
+                dialog.RootFolder = Environment.SpecialFolder.MyDocuments;//
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.Cancel) return;// thoat va khong thuc hien doan code duoi
                 path = dialog.SelectedPath;
                 /*FileInfo[] file = new DirectoryInfo(path).GetFiles("*.mp3");*/
-                var fileInfos = new DirectoryInfo(path).GetFilesByExtentions(".wav",".flac", ".aac", ".wma", ".wmv", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mp4", ".mov", ".3g2", ".3gp2", ".3gp", ".3gpp", ".m4a", ".cda", ".aif", ".aifc", ".aiff", ".mid", ".midi", ".rmi", ".mkv", ".WAV", ".AAC", ".WMA", ".WMV", ".AVI", ".MPG", ".MPEG", ".M1V", ".MP2", ".MP3", ".MPA", ".MPE", ".M3U", ".MP4", ".MOV", ".3G2", ".3GP2", ".3GP", ".3GPP", ".M4A", ".CDA", ".AIF", ".AIFC", ".AIFF", ".MID", ".MIDI", ".RMI", ".MKV");
-                foreach( FileInfo fil in fileInfos) 
+                var fileInfos = new DirectoryInfo(path).GetFilesByExtentions(".wav", ".flac", ".aac", ".wma", ".wmv", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mp4", ".mov", ".3g2", ".3gp2", ".3gp", ".3gpp", ".m4a", ".cda", ".aif", ".aifc", ".aiff", ".mid", ".midi", ".rmi", ".mkv", ".WAV", ".AAC", ".WMA", ".WMV", ".AVI", ".MPG", ".MPEG", ".M1V", ".MP2", ".MP3", ".MPA", ".MPE", ".M3U", ".MP4", ".MOV", ".3G2", ".3GP2", ".3GP", ".3GPP", ".M4A", ".CDA", ".AIF", ".AIFC", ".AIFF", ".MID", ".MIDI", ".RMI", ".MKV");
+                foreach (FileInfo fil in fileInfos)
                 {
                     files.Add(fil.FullName);
                 }
@@ -80,27 +92,26 @@ namespace MP3_Final
             media.Open(new Uri(fileName));
             media.MediaEnded += Media_Ended;// them event chay bai tiep theo
             media.Play();
-
         }
-        private void Media_Ended (object sender, EventArgs e)
+        private void Media_Ended(object sender, EventArgs e)
         {
+            if(i<=files.Count)
             ++i;
             media.Stop();
             media.Open(new Uri(files[i]));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
-        
-        
-        private void sldVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
         {
-            media.Volume = sldVolume.Value;
-        }
-
-        void LoadVolume()
-        {
-            sldVolume.Value = 1;
-            media.Volume = sldVolume.Value;
+            if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
+            {
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+            }
+            else
+            {
+                darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
+            }
         }
     }
     public static class Linqhelper /* class extention */

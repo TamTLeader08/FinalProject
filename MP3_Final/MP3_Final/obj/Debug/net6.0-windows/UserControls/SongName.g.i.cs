@@ -62,7 +62,7 @@ namespace MP3_Final.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MP3_Final;V1.0.0.0;component/usercontrols/songname.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MP3_Final;component/usercontrols/songname.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControls\SongName.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

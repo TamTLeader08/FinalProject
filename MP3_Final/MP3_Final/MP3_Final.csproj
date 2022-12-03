@@ -5,10 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-	  <UseWindowsForms>true</UseWindowsForms>
+	<UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IconApp\Spotify.ico" />
     <None Remove="Images\DarkMode.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\Like.png" />
@@ -27,10 +29,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="IconApp\Spotify.ico" />
     <Resource Include="Images\DarkMode.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\Like.png" />

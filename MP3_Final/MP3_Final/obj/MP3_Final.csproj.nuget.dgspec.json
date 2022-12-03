@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GIT\\School Project\\My branch\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {}
+    "D:\\GIT\\School Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {}
   },
   "projects": {
-    "D:\\GIT\\School Project\\My branch\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {
+    "D:\\GIT\\School Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GIT\\School Project\\My branch\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+        "projectUniqueName": "D:\\GIT\\School Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
         "projectName": "MP3_Final",
-        "projectPath": "D:\\GIT\\School Project\\My branch\\FinalProject\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
+        "projectPath": "D:\\GIT\\School Project\\MP3_Final\\MP3_Final\\MP3_Final.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\GIT\\School Project\\My branch\\FinalProject\\MP3_Final\\MP3_Final\\obj\\",
+        "outputPath": "D:\\GIT\\School Project\\MP3_Final\\MP3_Final\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
