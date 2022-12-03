@@ -22,10 +22,13 @@ namespace MP3_Final
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Global variants
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
         List<string> files = new List<string>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
+
+        // Methods/ Functions
         public MainWindow()
         {
             InitializeComponent();
@@ -101,15 +104,39 @@ namespace MP3_Final
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
+
+        private void sldVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            media.Volume = sldVolume.Value;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sldVolume.Value == 0)
+            {
+                sldVolume.Value = 1;
+            }
+            else
+            {
+                sldVolume.Value = 0;
+            }
+        }
+
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
         {
             if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+                Music_Player.Background = Brushes.Black;
+                searchBar.Background = (Brush) new BrushConverter().ConvertFrom("#3a3b3d");
+                searchTB.Foreground = Brushes.White;
             }
             else
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
+                Music_Player.Background = Brushes.White;
+                searchBar.Background = Brushes.White;
+                searchTB.Foreground = Brushes.Black;
             }
         }
     }
