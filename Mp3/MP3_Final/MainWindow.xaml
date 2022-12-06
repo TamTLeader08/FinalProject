@@ -214,15 +214,15 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
-                            <TextBlock Grid.Column="1" Text="3:57"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            <TextBlock x:Name="tbStart" Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock x:Name="tbEnd" Grid.Column="1" Text="3:57"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
 
                         </Grid>
                             <StackPanel Margin="10 0 0 10" Orientation="Horizontal">
 
                             
                             </StackPanel>
-                            <Slider Name="slider_seek" Foreground="#ffffff" Width="auto" Height="auto" Margin="-2 0 0 0"/>
+                            <Slider Name="slider_seek" Foreground="#ffffff" Width="auto" Height="auto" Margin="-2 0 0 0" ValueChanged="slider_seek_ValueChanged" />
 
 
                             <StackPanel Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -259,7 +259,7 @@
                                     <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
-                                <Button x:Name="replaybtn" Style="{StaticResource playerButton}">
+                                <Button x:Name="replaybtn" Style="{StaticResource playerButton}" Click="replaybtn_Click">
                                     <materialDesign:PackIcon Kind="Replay" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
