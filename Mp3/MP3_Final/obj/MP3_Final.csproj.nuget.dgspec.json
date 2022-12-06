@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {}
+    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {}
   },
   "projects": {
-    "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {
+    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+        "projectUniqueName": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
         "projectName": "MP3_Final",
-        "projectPath": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\obj\\",
+        "projectPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

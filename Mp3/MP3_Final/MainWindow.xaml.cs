@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MP3_Final
 {
@@ -26,9 +27,55 @@ namespace MP3_Final
         string fileName = string.Empty, path = string.Empty;
         List<string> files = new List<string>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
+
+
+        DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Tick += Timer_Tick;
+            media.MediaOpened += Media_MediaOpened;
+            media.MediaEnded += Media_MediaEnded;
+        }
+
+        
+
+        bool repeatMedia = false;
+        private void Media_MediaEnded(object? sender, EventArgs e)
+        {
+            if (repeatMedia)
+            {
+                media.Position = TimeSpan.Zero;
+                media.Play();
+            }
+            else
+            {
+                slider_seek.Value = 0;
+                tbStart.Text = "00:00";
+                media.Pause();                
+                pausebtn.Content = pausebtn.FindResource("Play");
+                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                s.Begin();
+            }
+        }
+
+        private void Media_MediaOpened(object? sender, EventArgs e)
+        {
+            tbEnd.Text = string.Format("{0}", media.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            TimeSpan ts = media.NaturalDuration.TimeSpan;
+            slider_seek.Maximum = ts.TotalSeconds;
+            timer.Start();
+            pausebtn.Content = pausebtn.FindResource("Pause");
+            Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+            s.Begin();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            slider_seek.Value = media.Position.TotalSeconds;
+            tbStart.Text = string.Format("{0}", media.Position.ToString(@"mm\:ss"));
         }
         private void heartbtn_Click(object sender, RoutedEventArgs e)
         {
@@ -37,20 +84,23 @@ namespace MP3_Final
 
         private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
-            if (pausebtn.Content == pausebtn.FindResource("Pause"))
+            if (media.Source != null)
             {
-                pausebtn.Content = pausebtn.FindResource("Play");
-                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
-                s.Begin();
-                //mediaElement1.Pause();
-            }
-            else
-            {
-                pausebtn.Content = pausebtn.FindResource("Pause");
-                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
-                s.Begin();
-                //mediaElement1.Play();
-            }
+                if (pausebtn.Content == pausebtn.FindResource("Pause"))
+                {
+                    pausebtn.Content = pausebtn.FindResource("Play");
+                    Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                    s.Begin();
+                    media.Pause();
+                }
+                else
+                {
+                    pausebtn.Content = pausebtn.FindResource("Pause");
+                    Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                    s.Begin();
+                    media.Play();
+                }
+            } 
         }
         private void FileUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -66,7 +116,7 @@ namespace MP3_Final
                 return;
             }
             fileName = dialog.FileName;
-            //code duoi la chay nhac
+            //code duoi la chay nhac    
             media.Open(new Uri(fileName));
             media.Play();
         }
@@ -101,15 +151,50 @@ namespace MP3_Final
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
+
+        private void replaybtn_Click(object sender, RoutedEventArgs e)
+        {
+            replaybtn.Foreground = (replaybtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
+            repeatMedia = (repeatMedia == false && replaybtn.Foreground == Brushes.DeepPink) ? true : false;
+        }
+
+        private void slider_seek_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            media.Position = TimeSpan.FromSeconds(slider_seek.Value);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sldVolume.Value == 0)
+            {
+                sldVolume.Value = 1;
+            }
+            else
+            {
+                sldVolume.Value = 0;
+            }
+        }
+
+        private void sldVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            media.Volume = sldVolume.Value;
+        }
+
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
         {
             if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+                Music_Player.Background = Brushes.Black;
+                searchBar.Background = (Brush)new BrushConverter().ConvertFrom("#3a3b3d");
+                searchTB.Foreground = Brushes.White;
             }
             else
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
+                Music_Player.Background = Brushes.White;
+                searchBar.Background = Brushes.White;
+                searchTB.Foreground = Brushes.Black;
             }
         }
     }
