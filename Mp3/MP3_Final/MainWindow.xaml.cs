@@ -70,6 +70,7 @@ namespace MP3_Final
             pausebtn.Content = pausebtn.FindResource("Pause");
             Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
             s.Begin();
+
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -123,6 +124,7 @@ namespace MP3_Final
 
         private void FolderUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            i = 0;
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 dialog.RootFolder = Environment.SpecialFolder.MyDocuments;//
@@ -178,6 +180,28 @@ namespace MP3_Final
         private void sldVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             media.Volume = sldVolume.Value;
+        }
+
+        private void nextbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (i <= files.Count)
+                ++i;
+            else return;
+            media.Stop();
+            media.Open(new Uri(files[i]));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
+        }
+
+        private void previousbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (i <= files.Count && i > 0)
+                i--;
+            else return;
+            media.Stop();
+            media.Open(new Uri(files[i]));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
         }
 
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)

@@ -232,7 +232,7 @@
                                     <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="previousbtn" Style="{StaticResource playerButton}" Click="previousbtn_Click">
                                     <materialDesign:PackIcon Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
@@ -256,7 +256,7 @@
                                     <DynamicResource ResourceKey="Play"/>
                                 </Button>
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="nextbtn" Style="{StaticResource playerButton}" Click="nextbtn_Click">
                                     <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
