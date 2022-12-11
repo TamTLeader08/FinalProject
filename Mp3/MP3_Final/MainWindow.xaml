@@ -228,7 +228,7 @@
 
                             <StackPanel Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Stretch">
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="shufflebtn" Style="{StaticResource playerButton}" Click="shufflebtn_Click">
                                     <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 

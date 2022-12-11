@@ -25,9 +25,8 @@ namespace MP3_Final
     {
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
-        List<string> files = new List<string>();
+        List<string> songs = new List<string>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
-
 
         DispatcherTimer timer;
         public MainWindow()
@@ -47,6 +46,7 @@ namespace MP3_Final
         {
             if (repeatMedia)
             {
+                i--;
                 media.Position = TimeSpan.Zero;
                 media.Play();
             }
@@ -116,6 +116,8 @@ namespace MP3_Final
             {
                 return;
             }
+            songs.Add(dialog.FileName);
+            i = songs.Count - 1;
             fileName = dialog.FileName;
             //code duoi la chay nhac    
             media.Open(new Uri(fileName));
@@ -135,21 +137,21 @@ namespace MP3_Final
                 var fileInfos = new DirectoryInfo(path).GetFilesByExtentions(".wav", ".flac", ".aac", ".wma", ".wmv", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mp4", ".mov", ".3g2", ".3gp2", ".3gp", ".3gpp", ".m4a", ".cda", ".aif", ".aifc", ".aiff", ".mid", ".midi", ".rmi", ".mkv", ".WAV", ".AAC", ".WMA", ".WMV", ".AVI", ".MPG", ".MPEG", ".M1V", ".MP2", ".MP3", ".MPA", ".MPE", ".M3U", ".MP4", ".MOV", ".3G2", ".3GP2", ".3GP", ".3GPP", ".M4A", ".CDA", ".AIF", ".AIFC", ".AIFF", ".MID", ".MIDI", ".RMI", ".MKV");
                 foreach (FileInfo fil in fileInfos)
                 {
-                    files.Add(fil.FullName);
+                    songs.Add(fil.FullName);
                 }
             }
 
-            fileName = files[i];
+            fileName = songs[i];
             media.Open(new Uri(fileName));
             media.MediaEnded += Media_Ended;// them event chay bai tiep theo
             media.Play();
         }
         private void Media_Ended(object sender, EventArgs e)
         {
-            if (i <= files.Count)
+            if (i < songs.Count)
                 ++i;
             media.Stop();
-            media.Open(new Uri(files[i]));
+            media.Open(new Uri(songs[i]));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
@@ -184,22 +186,32 @@ namespace MP3_Final
 
         private void nextbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (i <= files.Count)
+            if (i < songs.Count - 1)
                 ++i;
             else return;
             media.Stop();
-            media.Open(new Uri(files[i]));
+            media.Open(new Uri(songs[i]));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
 
         private void previousbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (i <= files.Count && i > 0)
+            if (i > 0)
                 i--;
             else return;
             media.Stop();
-            media.Open(new Uri(files[i]));
+            media.Open(new Uri(songs[i]));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
+        }
+
+        private void shufflebtn_Click(object sender, RoutedEventArgs e)
+        {
+            i = 0;
+            songs.Shuffle();
+            media.Stop();
+            media.Open(new Uri(songs[i]));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
@@ -233,6 +245,21 @@ namespace MP3_Final
                 throw new ArgumentNullException("extensions");
             IEnumerable<FileInfo> files = dir.EnumerateFiles();
             return files.Where(f => exts.Contains(f.Extension));/*=> la 1 lambda expressions. Xem them tai https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions */
+        }
+        // make a shuffle funct for playlist
+        private static Random rng = new Random();
+
+        public static void Shuffle<T>(this List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
     }
 }
