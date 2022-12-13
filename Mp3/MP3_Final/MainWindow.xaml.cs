@@ -266,6 +266,14 @@ namespace MP3_Final
                 songs.Add(song);
             }
             reader.Close();
+            if (songs.Count == 0) { return; }
+            if (pausebtn.Content == pausebtn.FindResource("Play"))
+            {
+                pausebtn.Content = pausebtn.FindResource("Pause");
+                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                s.Begin();
+                media.Play();
+            }
             fileName = songs[i].path;
             media.Open(new Uri(fileName));
             media.Play();
