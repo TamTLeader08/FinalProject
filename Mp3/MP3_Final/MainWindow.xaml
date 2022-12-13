@@ -31,8 +31,8 @@
 
                     <TextBlock Text="Home"/>
                 </Button>
-                <Button Style="{StaticResource menuButton}"
-                    Margin="15,118,45,271">
+                <Button x:Name="Favorite" Style="{StaticResource menuButton}"
+                    Margin="15,118,45,271" Click="Favorite_Click">
                     <TextBlock Text="Favorite" Style="{StaticResource ResourceKey=menuTitle}"/>
                 </Button>
                 <Button Style="{StaticResource menuButton}"
@@ -228,11 +228,11 @@
 
                             <StackPanel Margin="5 0 0 0" Orientation="Horizontal" HorizontalAlignment="Stretch">
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="shufflebtn" Style="{StaticResource playerButton}" Click="shufflebtn_Click">
                                     <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="previousbtn" Style="{StaticResource playerButton}" Click="previousbtn_Click">
                                     <materialDesign:PackIcon Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
@@ -256,7 +256,7 @@
                                     <DynamicResource ResourceKey="Play"/>
                                 </Button>
 
-                                <Button Style="{StaticResource playerButton}">
+                                <Button x:Name="nextbtn" Style="{StaticResource playerButton}" Click="nextbtn_Click">
                                     <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
                                 </Button>
 
