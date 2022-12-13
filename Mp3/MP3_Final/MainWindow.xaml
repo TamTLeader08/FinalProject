@@ -31,8 +31,8 @@
 
                     <TextBlock Text="Home"/>
                 </Button>
-                <Button Style="{StaticResource menuButton}"
-                    Margin="15,118,45,271">
+                <Button x:Name="Favorite" Style="{StaticResource menuButton}"
+                    Margin="15,118,45,271" Click="Favorite_Click">
                     <TextBlock Text="Favorite" Style="{StaticResource ResourceKey=menuTitle}"/>
                 </Button>
                 <Button Style="{StaticResource menuButton}"

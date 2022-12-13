@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -15,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.LinkLabel;
 
 namespace MP3_Final
 {
@@ -25,21 +28,38 @@ namespace MP3_Final
     {
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
-        List<string> songs = new List<string>();
+        List<Song> songs = new List<Song>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
+        string playlist1 = @"Playlist1.txt", playlist2 = @"Playlist2.txt", playlist3 = @"Playlist3.txt";
+        string fav = @"Favorite.txt";
 
         DispatcherTimer timer;
+
+        public class Song
+        {
+            public bool favor = false;
+            public string path;
+            public Song(string x, bool foo)
+            {
+                path = x;
+                favor = foo;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            if (!System.IO.File.Exists(fav))
+            {
+                System.IO.File.Create(fav);
+            }
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += Timer_Tick;
             media.MediaOpened += Media_MediaOpened;
             media.MediaEnded += Media_MediaEnded;
+            media.MediaEnded += Media_Ended;// them event chay bai tiep theo
         }
-
-        
 
         bool repeatMedia = false;
         private void Media_MediaEnded(object? sender, EventArgs e)
@@ -70,7 +90,11 @@ namespace MP3_Final
             pausebtn.Content = pausebtn.FindResource("Pause");
             Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
             s.Begin();
-
+            if (songs[i].favor)
+            {
+                heartbtn.Foreground = Brushes.DeepPink;
+            }
+            else heartbtn.Foreground = Brushes.White;
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -81,6 +105,16 @@ namespace MP3_Final
         private void heartbtn_Click(object sender, RoutedEventArgs e)
         {
             heartbtn.Foreground = (heartbtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
+            if (!songs[i].favor)
+            {
+                System.IO.File.AppendAllText(fav, songs[i].path + "\n");
+                songs[i].favor = true;
+            }
+            else
+            {
+                songs[i].favor = false;
+                System.IO.File.WriteAllLines(fav, System.IO.File.ReadLines(fav).Where(l => l != songs[i].path).ToList());
+            }
         }
 
         private void pausebtn_Click(object sender, RoutedEventArgs e)
@@ -116,7 +150,20 @@ namespace MP3_Final
             {
                 return;
             }
-            songs.Add(dialog.FileName);
+            string line;
+            bool heart = false;
+            StreamReader reader = new StreamReader(fav);
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line == dialog.FileName)
+                {
+                    heart = true;
+                    break;
+                }
+            }
+            reader.Close();
+            Song song = new Song(dialog.FileName, heart);
+            songs.Add(song);
             i = songs.Count - 1;
             fileName = dialog.FileName;
             //code duoi la chay nhac    
@@ -126,7 +173,6 @@ namespace MP3_Final
 
         private void FolderUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            i = 0;
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 dialog.RootFolder = Environment.SpecialFolder.MyDocuments;//
@@ -135,15 +181,28 @@ namespace MP3_Final
                 path = dialog.SelectedPath;
                 /*FileInfo[] file = new DirectoryInfo(path).GetFiles("*.mp3");*/
                 var fileInfos = new DirectoryInfo(path).GetFilesByExtentions(".wav", ".flac", ".aac", ".wma", ".wmv", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mp4", ".mov", ".3g2", ".3gp2", ".3gp", ".3gpp", ".m4a", ".cda", ".aif", ".aifc", ".aiff", ".mid", ".midi", ".rmi", ".mkv", ".WAV", ".AAC", ".WMA", ".WMV", ".AVI", ".MPG", ".MPEG", ".M1V", ".MP2", ".MP3", ".MPA", ".MPE", ".M3U", ".MP4", ".MOV", ".3G2", ".3GP2", ".3GP", ".3GPP", ".M4A", ".CDA", ".AIF", ".AIFC", ".AIFF", ".MID", ".MIDI", ".RMI", ".MKV");
+                
+                string line;
+                bool heart = false;
                 foreach (FileInfo fil in fileInfos)
                 {
-                    songs.Add(fil.FullName);
+                    StreamReader reader = new StreamReader(fav);
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if(line == fil.FullName)
+                        {
+                            heart = true;
+                            break;
+                        }
+                    }
+                    reader.Close();
+                    Song song = new Song(fil.FullName, heart);
+                    heart = false;
+                    songs.Add(song);
                 }
             }
-
-            fileName = songs[i];
+            fileName = songs[i].path;
             media.Open(new Uri(fileName));
-            media.MediaEnded += Media_Ended;// them event chay bai tiep theo
             media.Play();
         }
         private void Media_Ended(object sender, EventArgs e)
@@ -151,7 +210,7 @@ namespace MP3_Final
             if (i < songs.Count)
                 ++i;
             media.Stop();
-            media.Open(new Uri(songs[i]));
+            media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
@@ -190,8 +249,25 @@ namespace MP3_Final
                 ++i;
             else return;
             media.Stop();
-            media.Open(new Uri(songs[i]));
+            media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
+        }
+
+        private void Favorite_Click(object sender, RoutedEventArgs e)
+        {
+            StreamReader reader = new StreamReader(fav);
+            i = 0;
+            songs = new List<Song>();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                Song song = new Song(line, true);
+                songs.Add(song);
+            }
+            reader.Close();
+            fileName = songs[i].path;
+            media.Open(new Uri(fileName));
             media.Play();
         }
 
@@ -201,7 +277,7 @@ namespace MP3_Final
                 i--;
             else return;
             media.Stop();
-            media.Open(new Uri(songs[i]));
+            media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
@@ -211,7 +287,7 @@ namespace MP3_Final
             i = 0;
             songs.Shuffle();
             media.Stop();
-            media.Open(new Uri(songs[i]));
+            media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
