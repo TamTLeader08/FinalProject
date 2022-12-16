@@ -222,7 +222,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Name="tbStart" Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
-                            <TextBlock x:Name="tbEnd" Grid.Column="1" Text="3:57"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            <TextBlock x:Name="tbEnd" Grid.Column="1" Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
 
                         </Grid>
 
@@ -297,7 +297,7 @@
                     <RotateTransform x:Name="MyAnimatedTransform" Angle="0" />
                 </Ellipse.RenderTransform>
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="/Images/singer.jpg"/>
+                    <ImageBrush x:Name="img" ImageSource = "Images/singer.jpg"/>
                 </Ellipse.Fill>
             </Ellipse>
 
@@ -312,7 +312,7 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
                 </Border.Effect>
-                <TextBlock Text="THÔNG TIN BÀI HÁT" Foreground="White" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </Grid>
     </Grid>
