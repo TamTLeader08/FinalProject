@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GIT\School Project\newtest\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
+D:\GIT\School Project\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
 MP3_Final
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\GIT\School Project\newtest\FinalProject\Mp3\MP3_Final\App.xaml
-21526651776
+D:\GIT\School Project\FinalProject\Mp3\MP3_Final\App.xaml
+31703660980
 1-913308027
-6167515023
-205-1781294054
-MainWindow.xaml;UserControls\SongName.xaml;
+7-2117062227
+206-563657577
+MainWindow.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
 
 False
 

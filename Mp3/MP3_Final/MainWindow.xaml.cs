@@ -8,12 +8,17 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.LinkLabel;
 
 namespace MP3_Final
 {
@@ -24,33 +29,152 @@ namespace MP3_Final
     {
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
-        List<string> files = new List<string>();
+        List<Song> songs = new List<Song>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
+        string playlist1 = @"Playlist1.txt", playlist2 = @"Playlist2.txt", playlist3 = @"Playlist3.txt";
+        string fav = @"Favorite.txt";
+
+        DispatcherTimer timer;
+
+        public class Song
+        {
+            public bool favor = false;
+            public string path;
+            public Song(string x, bool foo)
+            {
+                path = x;
+                favor = foo;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            if (!System.IO.File.Exists(fav))
+            {
+                System.IO.File.Create(fav);
+            }
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Tick += Timer_Tick;
+            media.MediaOpened += Media_MediaOpened;
+            media.MediaEnded += Media_MediaEnded;
+            media.MediaEnded += Media_Ended;// them event chay bai tiep theo
+        }
+
+        bool repeatMedia = false;
+        private void Media_MediaEnded(object? sender, EventArgs e)
+        {
+            if (repeatMedia)
+            {
+                i--;
+                media.Position = TimeSpan.Zero;
+                media.Play();
+            }
+            else
+            {
+                slider_seek.Value = 0;
+                tbStart.Text = "00:00";
+                media.Pause();                
+                pausebtn.Content = pausebtn.FindResource("Play");
+                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                s.Begin();
+            }
+        }
+        private void Coverload()
+        {
+            TagLib.File file = TagLib.File.Create(songs[i].path);
+            MemoryStream memoryStream = new MemoryStream(file.Tag.Pictures[0].Data.Data);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            if (file.Tag.Pictures != null && file.Tag.Pictures.Length != 0)
+            {
+               
+                //memoryStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.StreamSource = memoryStream;
+                //memoryStream.Dispose();
+                bitmap.EndInit();
+                
+                img.ImageSource = bitmap;//load hinh
+            }
+            else
+            {
+                img.ImageSource = new BitmapImage(new Uri(@"/Images/singer.jpg", UriKind.Relative));
+            }
+            string title ="Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date ="Năm ra mắt: " + ((file.Tag.Year==0)? "" : file.Tag.Year.ToString()),
+                kbit="Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
+                string [] artist = file.Tag.Performers, gerne = file.Tag.Genres;
+            infotextblock.Text = title + "\n" + album + "\nCa sĩ: ";
+            for(int i =0;i<artist.Count();i++)
+            {
+                infotextblock.Text += artist[i];
+                if (i > 0 && i < artist.Count() - 1) infotextblock.Text += ",";
+            }
+            infotextblock.Text += "\nThể loại: ";
+            for(int i = 0;i<gerne.Count();i++)
+            {
+                infotextblock.Text += gerne[i];
+                if (i > 0 && i < gerne.Count() - 1) infotextblock.Text += ",";
+            }
+            infotextblock.Text+= "\n" + kbit;
+        }
+        private void Media_MediaOpened(object? sender, EventArgs e)
+        {
+            tbEnd.Text = string.Format("{0}", media.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            TimeSpan ts = media.NaturalDuration.TimeSpan;
+            slider_seek.Maximum = ts.TotalSeconds;
+            timer.Start();
+            pausebtn.Content = pausebtn.FindResource("Pause");
+            Coverload();
+            Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+            s.Begin();
+            if (songs[i].favor)
+            {
+                heartbtn.Foreground = Brushes.DeepPink;
+            }
+            else heartbtn.Foreground = Brushes.White;
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            slider_seek.Value = media.Position.TotalSeconds;
+            tbStart.Text = string.Format("{0}", media.Position.ToString(@"mm\:ss"));
         }
         private void heartbtn_Click(object sender, RoutedEventArgs e)
         {
             heartbtn.Foreground = (heartbtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
+            if (!songs[i].favor)
+            {
+                System.IO.File.AppendAllText(fav, songs[i].path + "\n");
+                songs[i].favor = true;
+            }
+            else
+            {
+                songs[i].favor = false;
+                System.IO.File.WriteAllLines(fav, System.IO.File.ReadLines(fav).Where(l => l != songs[i].path).ToList());
+            }
         }
 
         private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
-            if (pausebtn.Content == pausebtn.FindResource("Pause"))
+            if (media.Source != null)
             {
-                pausebtn.Content = pausebtn.FindResource("Play");
-                Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
-                s.Begin();
-                //mediaElement1.Pause();
-            }
-            else
-            {
-                pausebtn.Content = pausebtn.FindResource("Pause");
-                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
-                s.Begin();
-                //mediaElement1.Play();
-            }
+                if (pausebtn.Content == pausebtn.FindResource("Pause"))
+                {
+                    pausebtn.Content = pausebtn.FindResource("Play");
+                    Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
+                    s.Begin();
+                    media.Pause();
+                }
+                else
+                {
+                    pausebtn.Content = pausebtn.FindResource("Pause");
+                    Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                    s.Begin();
+                    media.Play();
+                }
+            } 
         }
         private void FileUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -65,8 +189,24 @@ namespace MP3_Final
             {
                 return;
             }
+            string line;
+            bool heart = false;
+            StreamReader reader = new StreamReader(fav);
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line == dialog.FileName)
+                {
+                    heart = true;
+                    break;
+                }
+            }
+            reader.Close();
+            Song song = new Song(dialog.FileName, heart);
+            songs.Add(song);
+            i = songs.Count - 1;
             fileName = dialog.FileName;
-            //code duoi la chay nhac
+            Coverload();
+            //code duoi la chay nhac    
             media.Open(new Uri(fileName));
             media.Play();
         }
@@ -81,35 +221,141 @@ namespace MP3_Final
                 path = dialog.SelectedPath;
                 /*FileInfo[] file = new DirectoryInfo(path).GetFiles("*.mp3");*/
                 var fileInfos = new DirectoryInfo(path).GetFilesByExtentions(".wav", ".flac", ".aac", ".wma", ".wmv", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mp4", ".mov", ".3g2", ".3gp2", ".3gp", ".3gpp", ".m4a", ".cda", ".aif", ".aifc", ".aiff", ".mid", ".midi", ".rmi", ".mkv", ".WAV", ".AAC", ".WMA", ".WMV", ".AVI", ".MPG", ".MPEG", ".M1V", ".MP2", ".MP3", ".MPA", ".MPE", ".M3U", ".MP4", ".MOV", ".3G2", ".3GP2", ".3GP", ".3GPP", ".M4A", ".CDA", ".AIF", ".AIFC", ".AIFF", ".MID", ".MIDI", ".RMI", ".MKV");
+                
+                string line;
+                bool heart = false;
                 foreach (FileInfo fil in fileInfos)
                 {
-                    files.Add(fil.FullName);
+                    StreamReader reader = new StreamReader(fav);
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if(line == fil.FullName)
+                        {
+                            heart = true;
+                            break;
+                        }
+                    }
+                    reader.Close();
+                    Song song = new Song(fil.FullName, heart);
+                    heart = false;
+                    songs.Add(song);
                 }
             }
-
-            fileName = files[i];
+            fileName = songs[i].path;
             media.Open(new Uri(fileName));
-            media.MediaEnded += Media_Ended;// them event chay bai tiep theo
             media.Play();
         }
         private void Media_Ended(object sender, EventArgs e)
         {
-            if (i <= files.Count)
+            if (i < songs.Count)
                 ++i;
             media.Stop();
-            media.Open(new Uri(files[i]));
+            media.Open(new Uri(songs[i].path));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            Coverload();
+            media.Play();
+        }
+
+        private void replaybtn_Click(object sender, RoutedEventArgs e)
+        {
+            replaybtn.Foreground = (replaybtn.Foreground != Brushes.DeepPink) ? Brushes.DeepPink : Brushes.White;
+            repeatMedia = (repeatMedia == false && replaybtn.Foreground == Brushes.DeepPink) ? true : false;
+        }
+
+        private void slider_seek_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            media.Position = TimeSpan.FromSeconds(slider_seek.Value);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sldVolume.Value == 0)
+            {
+                sldVolume.Value = 1;
+            }
+            else
+            {
+                sldVolume.Value = 0;
+            }
+        }
+
+        private void sldVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            media.Volume = sldVolume.Value;
+        }
+
+        private void nextbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (i < songs.Count - 1)
+                ++i;
+            else return;
+            media.Stop();
+            media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
+
+        private void Favorite_Click(object sender, RoutedEventArgs e)
+        {
+            StreamReader reader = new StreamReader(fav);
+            i = 0;
+            songs = new List<Song>();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                Song song = new Song(line, true);
+                songs.Add(song);
+            }
+            reader.Close();
+            if (songs.Count == 0) { return; }
+            if (pausebtn.Content == pausebtn.FindResource("Play"))
+            {
+                pausebtn.Content = pausebtn.FindResource("Pause");
+                Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
+                s.Begin();
+                media.Play();
+            }
+            fileName = songs[i].path;
+            media.Open(new Uri(fileName));
+            media.Play();
+        }
+
+        private void previousbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (i > 0)
+                i--;
+            else return;
+            media.Stop();
+            media.Open(new Uri(songs[i].path));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
+        }
+
+        private void shufflebtn_Click(object sender, RoutedEventArgs e)
+        {
+            i = 0;
+            songs.Shuffle();
+            media.Stop();
+            media.Open(new Uri(songs[i].path));
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
+        }
+
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
         {
             if (darkmodeBtn.Content == darkmodeBtn.FindResource("Light"))
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Dark");
+                Music_Player.Background = Brushes.Black;
+                searchBar.Background = (Brush)new BrushConverter().ConvertFrom("#3a3b3d");
+                searchTB.Foreground = Brushes.White;
             }
             else
             {
                 darkmodeBtn.Content = darkmodeBtn.FindResource("Light");
+                Music_Player.Background = Brushes.White;
+                searchBar.Background = Brushes.White;
+                searchTB.Foreground = Brushes.Black;
             }
         }
     }
@@ -124,6 +370,21 @@ namespace MP3_Final
                 throw new ArgumentNullException("extensions");
             IEnumerable<FileInfo> files = dir.EnumerateFiles();
             return files.Where(f => exts.Contains(f.Extension));/*=> la 1 lambda expressions. Xem them tai https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions */
+        }
+        // make a shuffle funct for playlist
+        private static Random rng = new Random();
+
+        public static void Shuffle<T>(this List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
     }
 }

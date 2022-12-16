@@ -33,6 +33,19 @@
         "build": {
           "build/MaterialDesignThemes.targets": {}
         }
+      },
+      "TagLibSharp/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/TagLibSharp.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/TagLibSharp.dll": {
+            "related": ".pdb"
+          }
+        }
       }
     }
   },
@@ -96,11 +109,29 @@
         "materialdesignthemes.nuspec",
         "tools/VisualStudioToolsManifest.xml"
       ]
+    },
+    "TagLibSharp/2.3.0": {
+      "sha512": "Qo4z6ZjnIfbR3Us1Za5M2vQ97OWZPmODvVmepxZ8XW0UIVLGdO2T63/N3b23kCcyiwuIe0TQvMEQG8wUCCD1mA==",
+      "type": "package",
+      "path": "taglibsharp/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/TagLibSharp.dll",
+        "lib/net462/TagLibSharp.pdb",
+        "lib/net462/TaglibSharp.xml",
+        "lib/netstandard2.0/TagLibSharp.dll",
+        "lib/netstandard2.0/TagLibSharp.pdb",
+        "lib/netstandard2.0/TaglibSharp.xml",
+        "taglibsharp.2.3.0.nupkg.sha512",
+        "taglibsharp.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MaterialDesignThemes >= 4.6.1"
+      "MaterialDesignThemes >= 4.6.1",
+      "TagLibSharp >= 2.3.0"
     ]
   },
   "packageFolders": {
@@ -109,11 +140,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "projectUniqueName": "D:\\GIT\\School Project\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
       "projectName": "MP3_Final",
-      "projectPath": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "projectPath": "D:\\GIT\\School Project\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\GIT\\School Project\\newtest\\FinalProject\\Mp3\\MP3_Final\\obj\\",
+      "outputPath": "D:\\GIT\\School Project\\FinalProject\\Mp3\\MP3_Final\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -145,6 +176,10 @@
           "MaterialDesignThemes": {
             "target": "Package",
             "version": "[4.6.1, )"
+          },
+          "TagLibSharp": {
+            "target": "Package",
+            "version": "[2.3.0, )"
           }
         },
         "imports": [
