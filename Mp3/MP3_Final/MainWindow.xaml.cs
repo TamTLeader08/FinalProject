@@ -84,23 +84,23 @@ namespace MP3_Final
         private void Coverload()
         {
             TagLib.File file = TagLib.File.Create(songs[i].path);
-            MemoryStream memoryStream = new MemoryStream(file.Tag.Pictures[0].Data.Data);
-            memoryStream.Seek(0, SeekOrigin.Begin);
-            if (file.Tag.Pictures != null && file.Tag.Pictures.Length != 0)
+            var firstp = file.Tag.Pictures.FirstOrDefault();
+            if (firstp != null)
             {
-               
-                //memoryStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.StreamSource = memoryStream;
-                //memoryStream.Dispose();
-                bitmap.EndInit();
-                
-                img.ImageSource = bitmap;//load hinh
-            }
-            else
-            {
-                img.ImageSource = new BitmapImage(new Uri(@"/Images/singer.jpg", UriKind.Relative));
+                MemoryStream memoryStream = new MemoryStream(file.Tag.Pictures[0].Data.Data);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                if (file.Tag.Pictures != null && file.Tag.Pictures.Length != 0)
+                {
+
+                    //memoryStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = memoryStream;
+                    //memoryStream.Dispose();
+                    bitmap.EndInit();
+
+                    img.ImageSource = bitmap;//load hinh
+                }
             }
             string title ="Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date ="Năm ra mắt: " + ((file.Tag.Year==0)? "" : file.Tag.Year.ToString()),
                 kbit="Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
