@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\admin\Desktop\MP3APP\TT3\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
+D:\GIT\School Project\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
 MP3_Final
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\admin\Desktop\MP3APP\TT3\FinalProject\Mp3\MP3_Final\App.xaml
+D:\GIT\School Project\FinalProject\Mp3\MP3_Final\App.xaml
 31703660980
 1-913308027
 5915918123
-205-333637734
+206-563657577
 MainWindow.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
 
 False

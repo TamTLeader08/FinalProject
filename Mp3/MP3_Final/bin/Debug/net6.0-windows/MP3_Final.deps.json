@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "MP3_Final/1.0.0": {
         "dependencies": {
-          "MaterialDesignThemes": "4.6.1"
+          "MaterialDesignThemes": "4.6.1",
+          "TagLibSharp": "2.3.0"
         },
         "runtime": {
           "MP3_Final.dll": {}
@@ -30,6 +31,14 @@
           "lib/net6.0/MaterialDesignThemes.Wpf.dll": {
             "assemblyVersion": "4.6.1.0",
             "fileVersion": "4.6.1.0"
+          }
+        }
+      },
+      "TagLibSharp/2.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/TagLibSharp.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.0"
           }
         }
       }
@@ -54,6 +63,13 @@
       "sha512": "sha512-Yx3RxIqkwoe1rYxoUZ2iH1YdCly+dA8YAQJ5uknsUVhyVd1rgiXEn6fmtsovGaqKRZwUXGHnh4w7kRagxa8TCg==",
       "path": "materialdesignthemes/4.6.1",
       "hashPath": "materialdesignthemes.4.6.1.nupkg.sha512"
+    },
+    "TagLibSharp/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qo4z6ZjnIfbR3Us1Za5M2vQ97OWZPmODvVmepxZ8XW0UIVLGdO2T63/N3b23kCcyiwuIe0TQvMEQG8wUCCD1mA==",
+      "path": "taglibsharp/2.3.0",
+      "hashPath": "taglibsharp.2.3.0.nupkg.sha512"
     }
   }
 }
