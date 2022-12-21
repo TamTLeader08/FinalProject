@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
@@ -29,8 +30,10 @@ namespace MP3_Final
         MediaPlayer media = new MediaPlayer();
         string fileName = string.Empty, path = string.Empty;
         List<Song> songs = new List<Song>();
+        List<Song> search;
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
         string playlist1 = @"Playlist1.txt", playlist2 = @"Playlist2.txt", playlist3 = @"Playlist3.txt";
+        string history = @"History.txt";
         string fav = @"Favorite.txt";
 
         DispatcherTimer timer;
@@ -51,6 +54,10 @@ namespace MP3_Final
             if (!System.IO.File.Exists(fav))
             {
                 System.IO.File.Create(fav);
+            }
+            if (!System.IO.File.Exists(history))
+            {
+                System.IO.File.Create(history);
             }
 
             timer = new DispatcherTimer();
@@ -80,7 +87,67 @@ namespace MP3_Final
                 s.Begin();
             }
         }
+        void addAlbum(Song song, string album)
+        {
+            StreamReader reader = new StreamReader(album);
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line == song.path)
+                {
+                    reader.Close();
+                    return;
+                }
+            }
+            reader.Close();
+            System.IO.File.AppendAllText(album, song.path + "\n");
+        }
+        void deleteAlbum(Song song, string album)
+        {
+            System.IO.File.WriteAllLines(album, System.IO.File.ReadLines(fav).Where(l => l != song.path).ToList());
+        }
+        private void Coverload()
+        {
+            TagLib.File file = TagLib.File.Create(songs[i].path);
+            var firstp = file.Tag.Pictures.FirstOrDefault();
+            if (firstp != null)
+            {
+                MemoryStream memoryStream = new MemoryStream(file.Tag.Pictures[0].Data.Data);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                if (file.Tag.Pictures != null && file.Tag.Pictures.Length != 0)
+                {
 
+                    //memoryStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = memoryStream;
+                    //memoryStream.Dispose();
+                    bitmap.EndInit();
+
+                    img.ImageSource = bitmap;//load hinh
+                }
+                else
+                {
+                    img.ImageSource = new BitmapImage(new Uri(@"/Images/singer.jpg", UriKind.Relative));
+                }
+            }
+            string title ="Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date ="Năm ra mắt: " + ((file.Tag.Year==0)? "" : file.Tag.Year.ToString()),
+                kbit="Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
+                string [] artist = file.Tag.Performers, gerne = file.Tag.Genres;
+            infotextblock.Text = title + "\n" + album + "\nCa sĩ: ";
+            for(int i =0;i<artist.Count();i++)
+            {
+                infotextblock.Text += artist[i];
+                if (i > 0 && i < artist.Count() - 1) infotextblock.Text += ",";
+            }
+            infotextblock.Text += "\nThể loại: ";
+            for(int i = 0;i<gerne.Count();i++)
+            {
+                infotextblock.Text += gerne[i];
+                if (i > 0 && i < gerne.Count() - 1) infotextblock.Text += ",";
+            }
+            infotextblock.Text+= "\n" + kbit;
+        }
         private void Media_MediaOpened(object? sender, EventArgs e)
         {
             tbEnd.Text = string.Format("{0}", media.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
@@ -88,6 +155,7 @@ namespace MP3_Final
             slider_seek.Maximum = ts.TotalSeconds;
             timer.Start();
             pausebtn.Content = pausebtn.FindResource("Pause");
+            Coverload();
             Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
             s.Begin();
             if (songs[i].favor)
@@ -163,9 +231,11 @@ namespace MP3_Final
             }
             reader.Close();
             Song song = new Song(dialog.FileName, heart);
+            addAlbum(song, history);
             songs.Add(song);
             i = songs.Count - 1;
             fileName = dialog.FileName;
+            Coverload();
             //code duoi la chay nhac    
             media.Open(new Uri(fileName));
             media.Play();
@@ -197,6 +267,7 @@ namespace MP3_Final
                     }
                     reader.Close();
                     Song song = new Song(fil.FullName, heart);
+                    addAlbum(song, history);
                     heart = false;
                     songs.Add(song);
                 }
@@ -212,6 +283,7 @@ namespace MP3_Final
             media.Stop();
             media.Open(new Uri(songs[i].path));
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            Coverload();
             media.Play();
         }
 
@@ -277,6 +349,40 @@ namespace MP3_Final
             fileName = songs[i].path;
             media.Open(new Uri(fileName));
             media.Play();
+        }
+
+        private void searchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string[] keywords = searchTB.Text.Split(' ');
+            search = new List<Song>();
+            StreamReader reader = new StreamReader(history);
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                int flag = 0;
+                foreach(var keyword in keywords)
+                {
+                    if (System.Text.RegularExpressions.Regex.IsMatch(line, keyword, System.Text.RegularExpressions.RegexOptions.IgnoreCase)) { flag++; break; }
+                }
+                if (flag > keywords.Length/2)
+                {
+                    StreamReader reader2 = new StreamReader(fav);
+                    string line2;
+                    Song song;
+                    while ((line2 = reader2.ReadLine()) != null)
+                    {
+                        if (line == line2)
+                        {
+                            song = new Song(line, true);
+                            break;
+                        }
+                    }
+                    song = new Song(line, false);
+                    reader2.Close();
+                    search.Add(song);
+                }
+            }
+            reader.Close();
         }
 
         private void previousbtn_Click(object sender, RoutedEventArgs e)
