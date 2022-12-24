@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MP3_Final.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Name="editPlaylistBtn">
-    <Button>
+    <Button Click="Button_Click">
         <Button.Style>
             <Style TargetType="Button">
                 <Setter Property="Background" Value="White" />

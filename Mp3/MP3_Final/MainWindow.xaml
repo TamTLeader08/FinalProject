@@ -145,39 +145,11 @@
 
                     </Border>
 
-                    <ScrollViewer   Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer
+                        Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                        <StackPanel Margin="30,15,30,1">
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                        <StackPanel Name="songMenu" Margin="30,15,30,1">
+                            <!--Danh sách bài hát-->
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -312,7 +284,16 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
                 </Border.Effect>
-                <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ScrollViewer
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        
+                    <StackPanel>
+                        <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <!--Danh sách bài hát-->
+                    </StackPanel>
+                </ScrollViewer>
+    
             </Border>
         </Grid>
     </Grid>
