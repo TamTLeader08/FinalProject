@@ -187,6 +187,7 @@ namespace MP3_Final
         {
             SongName uc = new SongName();
             songMenu.Children.Add(uc);
+            uc.Path = song.path;
             TagLib.File file = TagLib.File.Create(song.path);
             uc.Number = songMenu.Children.IndexOf(uc).ToString();
             uc.Title = file.Tag.Title;
@@ -212,16 +213,22 @@ namespace MP3_Final
             SongName uc = (SongName)sender;
             songMenu.Children.Remove(uc);
             media.Stop();
-            songs.RemoveAt(uc.IndexOfSong);
-            for (int i = uc.IndexOfSong; i < songMenu.Children.Count; i++)
-            {
-                SongName songname = (SongName)songMenu.Children[i];
-                songname.IndexOfSong = i;
-                songname.Number = i.ToString();
-            }
-            infotextblock.Text = "";
             Storyboard s = (Storyboard)pausebtn.FindResource("stopellipse");
             s.Begin();
+            infotextblock.Text = "";
+            songs.RemoveAt(uc.IndexOfSong);
+            for (int i = 0; i < songMenu.Children.Count; i++)
+            {
+                SongName songname = (SongName)songMenu.Children[i];
+                for (int j = 0; j < songs.Count; j++)
+                {
+                    if (songname.Path == songs[j].path)
+                    {
+                        songname.IndexOfSong = j;
+                        break;
+                    }
+                }
+            }
         }
 
         // MouseLeftButtonDown Event of usercontrol songname
@@ -233,8 +240,7 @@ namespace MP3_Final
             fileName = songs[i].path;
             media.Open(new Uri(fileName));
             Coverload();
-            
-            
+
             try
             {
                 uc.IsActive = (uc.IsActive == false) ? true : false;
@@ -426,10 +432,22 @@ namespace MP3_Final
         {
             i = 0;
             songs.Shuffle();
-            media.Stop();
-            media.Open(new Uri(songs[i].path));
-            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
-            media.Play();
+            for (int i = 0; i < songMenu.Children.Count; i++)
+            {
+                SongName songname = (SongName)songMenu.Children[i];
+                for (int j = 0; j < songs.Count; j++)
+                {
+                    if (songname.Path == songs[j].path)
+                    {
+                        songname.IndexOfSong = j;
+                        break;
+                    }   
+                }
+            }
+            //media.Stop();
+            //media.Open(new Uri(songs[i].path));
+            //media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            //media.Play();
         }
 
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)

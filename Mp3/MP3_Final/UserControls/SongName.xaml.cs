@@ -22,7 +22,14 @@ namespace MP3_Final.UserControls
         public static readonly DependencyProperty IndexOfSongProperty = DependencyProperty.Register
             ("IndexOfSong", typeof(int), typeof(SongName));
 
-        
+        public string Path
+        {
+            get { return (string)GetValue(PathProperty); }
+            set { SetValue(PathProperty, value); }
+        }
+
+        public static readonly DependencyProperty PathProperty = DependencyProperty.Register
+            ("Path", typeof(string), typeof(SongName));
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
