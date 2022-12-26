@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Icon ="/IconApp/Spotify.ico"
-        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" Height="720" Width="1080" MinWidth="1080" MinHeight="720">
+        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" MinWidth="1080" MinHeight="720" Height="720" Width="1080" WindowState="Maximized">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -172,13 +172,13 @@
 
                     <Ellipse Height="90" Width="90"  VerticalAlignment="Center" Margin="10 5 0 5"  RenderTransformOrigin="0.487,0.072">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="/Images/m2.png"/>
+                            <ImageBrush x:Name="staticImage" ImageSource="/Images/m2.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Stretch" Margin="5,0,5,0" Height="48">
-                        <TextBlock Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="titleTxtBlock" Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock x:Name="singerTxtBlock" Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
                     </StackPanel>
 
 

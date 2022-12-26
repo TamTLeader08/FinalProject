@@ -62,9 +62,6 @@ namespace MP3_Final
             //media.MediaOpened += Media_MediaOpened;
             media.MediaEnded += Media_MediaEnded;
             media.MediaEnded += Media_Ended;// them event chay bai tiep theo
-            //for (int i = 0;i < songMenu.Children.Count; i++)
-            //    (SongName)songMenu.Children[i].Delete += OnDelete;
-            //uuc.Delete += OnDelete;
         }
 
         bool repeatMedia = false;
@@ -104,11 +101,21 @@ namespace MP3_Final
                     bitmap.EndInit();
 
                     img.ImageSource = bitmap;//load hinh
+                    staticImage.ImageSource = bitmap; // load hinh len anh nho 
                 }
             }
             string title ="Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date ="Năm ra mắt: " + ((file.Tag.Year==0)? "" : file.Tag.Year.ToString()),
                 kbit="Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
                 string [] artist = file.Tag.Performers, gerne = file.Tag.Genres;
+            // infortexblock at sliderbar section
+            titleTxtBlock.Text = file.Tag.Title;
+            singerTxtBlock.Text = "";
+            for (int i = 0; i < artist.Count(); i++)
+            {
+                singerTxtBlock.Text += artist[i];
+                if (i > 0 && i < artist.Count() - 1) infotextblock.Text += ",";
+            }
+            // infortextblock at left section 
             infotextblock.Text = title + "\n" + album + "\nCa sĩ: ";
             for(int i =0;i<artist.Count();i++)
             {
@@ -220,11 +227,12 @@ namespace MP3_Final
             for (int i = 0; i < songMenu.Children.Count; i++)
             {
                 SongName songname = (SongName)songMenu.Children[i];
+                songname.Number = i.ToString();
                 for (int j = 0; j < songs.Count; j++)
                 {
                     if (songname.Path == songs[j].path)
                     {
-                        songname.IndexOfSong = j;
+                        songname.IndexOfSong = j; 
                         break;
                     }
                 }
@@ -236,11 +244,6 @@ namespace MP3_Final
         {
             SongName uc = (SongName)sender;
             // gán index của bài hát cho biến toàn cục vị trí bài hát i 
-            i = uc.IndexOfSong;
-            fileName = songs[i].path;
-            media.Open(new Uri(fileName));
-            Coverload();
-
             try
             {
                 uc.IsActive = (uc.IsActive == false) ? true : false;
@@ -252,11 +255,16 @@ namespace MP3_Final
                 }
                 if (uc.IsActive == true)
                 {
+                    i = uc.IndexOfSong;
+                    fileName = songs[i].path;
+                    media.Open(new Uri(fileName));
+                    Coverload();
                     media.Play();
                     media.MediaOpened += Media_MediaOpened;
                     pausebtn.Content = pausebtn.FindResource("Pause");
                     Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
                     s.Begin();
+
                 }     
                 else
                 {
@@ -343,13 +351,15 @@ namespace MP3_Final
         }
         private void Media_Ended(object sender, EventArgs e)
         {
-            if (i < songs.Count)
+            if (i < songs.Count - 1)
+            {
                 ++i;
-            media.Stop();
-            media.Open(new Uri(songs[i].path));
-            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
-            Coverload();
-            media.Play();
+                media.Stop();
+                media.Open(new Uri(songs[i].path));
+                media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+                Coverload();
+                media.Play();
+            }                
         }
 
         private void replaybtn_Click(object sender, RoutedEventArgs e)
