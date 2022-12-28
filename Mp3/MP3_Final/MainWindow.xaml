@@ -286,14 +286,14 @@
                 </Border.Effect>
                 <ScrollViewer
                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                        
+
                     <StackPanel>
                         <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                         <!--Danh sách bài hát-->
                     </StackPanel>
                 </ScrollViewer>
-    
+
             </Border>
         </Grid>
     </Grid>

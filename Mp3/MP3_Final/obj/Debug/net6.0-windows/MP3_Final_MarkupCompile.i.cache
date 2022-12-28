@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\App.xaml
-31703660980
+41664143248
 1-913308027
-7-2117062227
+8-72871304
 206-346640666
-MainWindow.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
+MainWindow.xaml;UserControl1.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
 
 True
 

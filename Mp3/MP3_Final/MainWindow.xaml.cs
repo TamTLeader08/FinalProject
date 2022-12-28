@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace MP3_Final
 {
@@ -104,9 +105,9 @@ namespace MP3_Final
                     staticImage.ImageSource = bitmap; // load hinh len anh nho 
                 }
             }
-            string title ="Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date ="Năm ra mắt: " + ((file.Tag.Year==0)? "" : file.Tag.Year.ToString()),
-                kbit="Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
-                string [] artist = file.Tag.Performers, gerne = file.Tag.Genres;
+            string title = "Tên bài hát:" + file.Tag.Title, album = "Album: " + file.Tag.Album, date = "Năm ra mắt: " + ((file.Tag.Year == 0) ? "" : file.Tag.Year.ToString()),
+                kbit = "Bitrate: " + file.Properties.AudioBitrate.ToString() + "kbps";
+            string[] artist = file.Tag.Performers, gerne = file.Tag.Genres;
             // infortexblock at sliderbar section
             titleTxtBlock.Text = file.Tag.Title;
             singerTxtBlock.Text = "";
@@ -117,18 +118,18 @@ namespace MP3_Final
             }
             // infortextblock at left section 
             infotextblock.Text = title + "\n" + album + "\nCa sĩ: ";
-            for(int i =0;i<artist.Count();i++)
+            for (int i = 0; i < artist.Count(); i++)
             {
                 infotextblock.Text += artist[i];
                 if (i > 0 && i < artist.Count() - 1) infotextblock.Text += ",";
             }
             infotextblock.Text += "\nThể loại: ";
-            for(int i = 0;i<gerne.Count();i++)
+            for (int i = 0; i < gerne.Count(); i++)
             {
                 infotextblock.Text += gerne[i];
                 if (i > 0 && i < gerne.Count() - 1) infotextblock.Text += ",";
             }
-            infotextblock.Text+= "\n" + kbit;
+            infotextblock.Text += "\n" + kbit;
             string lyric = "Lyrics" + file.Tag.Lyrics;
             infotextblock.Text += "\n" + lyric;
         }
@@ -427,6 +428,26 @@ namespace MP3_Final
             //media.Play();
         }
 
+        private UserControl1 activeUI = null;
+        private void CreateAlbumClick(object sender, RoutedEventArgs e)
+        {
+            if (activeUI != null) Music_Player.Children.Remove(activeUI);
+            UserControl1 a = new UserControl1();
+            activeUI = a;
+            a.Close += new Action<object>(OnClose);
+            Grid.SetColumn(a, 1);
+
+            Grid.SetColumnSpan(a, 2);
+            
+            Music_Player.Children.Add(a);
+            //Grid.SetRow(a, 0);
+            //Grid.SetRowSpan(a, 4);
+        }
+
+        private void OnClose(object sender)
+        {
+            Music_Player.Children.Remove((UserControl1)sender);
+        }
         private void previousbtn_Click(object sender, RoutedEventArgs e)
         {
             if (i > 0)

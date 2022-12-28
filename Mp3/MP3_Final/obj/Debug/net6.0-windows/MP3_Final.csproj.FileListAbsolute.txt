@@ -461,3 +461,5 @@ C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-wi
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.pdb
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\MP3_Final.genruntimeconfig.cache
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
+C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.g.cs
+C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.baml
