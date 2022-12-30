@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -91,7 +93,29 @@ namespace MP3_Final.UserControls
 
         private void AddAlbumBtn_PopupClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("adding successfully");
+            AddToPlayList add  = new AddToPlayList();
+            add.ShowDialog();
+            string playList = add.playListPath;
+            if (playList != null)
+            {
+                string[] files = File.ReadAllLines(playList);
+                foreach ( string file in files )
+                {
+                    if (Path == file)
+                    {
+                        MessageBox.Show("Thêm thành công!");
+                        return;
+                    }
+                }
+
+                if (new FileInfo(playList).Length != 0)
+                {
+                    File.AppendAllText(playList, "\n");
+                }
+
+                File.AppendAllText(playList, Path);
+                MessageBox.Show("Thêm thành công!");
+            }
         }
 
         public event Action<object> DeleteClick;
@@ -99,7 +123,13 @@ namespace MP3_Final.UserControls
         {
             if (DeleteClick != null)
             {
+                string tempPath = MainWindow.currentPlaylist;
                 DeleteClick(this);
+                if (!File.Exists(tempPath))
+                {
+                    return;
+                }
+                File.WriteAllLines(tempPath, File.ReadLines(tempPath).Where(l => l != Path).ToList());
             }
         }
 
