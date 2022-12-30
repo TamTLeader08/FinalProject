@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\App.xaml
-21526651776
+6799929042
 1-913308027
-6167515023
-2051973095121
-MainWindow.xaml;UserControls\SongName.xaml;
+10565472620
+206-1295000706
+AddToPlayList.xaml;ChangeAlbumName.xaml;MainWindow.xaml;UserControl1.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
 
-True
+False
 

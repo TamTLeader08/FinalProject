@@ -5,11 +5,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:MP3_Final.UserControls"
              mc:Ignorable="d"
              Name="songName">
-    <Border Margin="0 0 0 3" CornerRadius="5" Padding="7">
-        <Border.Style>
+    <Border
+        x:Name="BdSongName" Margin="0 0 0 3" CornerRadius="5" Padding="7">
+        <Border.Style> 
+			
             <Style TargetType="Border">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
@@ -22,6 +25,7 @@
                 </Style.Triggers>
             </Style>
         </Border.Style>
+        
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -29,13 +33,47 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <TextBlock Text="{Binding ElementName=songName, Path=Number}" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="5 0 30 0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ElementName=songName, Path=Title}" Grid.Column="1" Foreground="White" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ElementName=songName, Path=Singer}" Grid.Column="2" Foreground="White" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ElementName=songName, Path=Time}" Grid.Column="3" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="0 0 5 0" VerticalAlignment="Center"/>
 
-            <TextBlock Text="{Binding ElementName=songName, Path=Number}" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="5 0 30 0"/>
-            <TextBlock Text="{Binding ElementName=songName, Path=Title}" Grid.Column="1" Foreground="White" FontSize="16" FontWeight="SemiBold" Margin="0 0 0 2"/>
-            <TextBlock Text="{Binding ElementName=songName, Path=Singer}" Grid.Column="2" Foreground="White" FontSize="16" FontWeight="SemiBold" Margin="0 0 0 2"/>
-            <TextBlock Text="{Binding ElementName=songName, Path=Time}" Grid.Column="3" Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" Margin="0 0 5 2" HorizontalAlignment="Right"/>
+            <ToggleButton Name="editTgBtn" Grid.Column="4"  VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="DotsVertical" Width="25" Height="25" Foreground="#f1f1f1"/>
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="50">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+                <ToggleButton.Style >
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="#ffffff"/>
+                        <Setter Property="Width" Value="40"/>
+                        <Setter Property="Height" Value="40"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1fae69"/>
+                                <Setter Property="Foreground" Value="#f0f0f0"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+
+            <Popup x:Name="playlistPopup" IsOpen="{Binding IsChecked, ElementName=editTgBtn}" AllowsTransparency="True" StaysOpen="False" PlacementTarget="{Binding ElementName=editTgBtn }" Placement="Right" VerticalOffset="20" HorizontalOffset="-15">
+                <Border Background="White" CornerRadius="5" Padding="0 4">
+                    <StackPanel>
+                        <local:EditPlaylistButton x:Name="AddAlbumBtn" Icon="PlaylistPlus" Function="Add album" PopupClick="AddAlbumBtn_PopupClick"/>
+                        <local:EditPlaylistButton x:Name="DelSongBtn" Icon="Delete" Function="Delete" PopupClick="DelSongBtn_PopupClick"/>
+                    </StackPanel>
+                </Border>
+            </Popup>
 
         </Grid>
     </Border>

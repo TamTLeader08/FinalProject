@@ -7,12 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddToPlayList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ChangeAlbumName.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControl1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\EditPlaylistButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\SongName.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddToPlayList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChangeAlbumName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControl1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\EditPlaylistButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\SongName.xaml">
