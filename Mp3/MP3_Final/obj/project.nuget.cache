@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "SorPBXXsuQlF4aTxOf1ufyjqefdqnLsTzXDQWIEo5qJlfC/La/6sNGqa/g/PLXa4c4EShPjvnacERUPN2qjD5A==",
+  "dgSpecHash": "uVebTEJFzZeInHZN6uDFKhq2MpUxriqRueayraoEWaL+IDO62DAEl86gE28GdGabEoDBNG9UEiNNjomZWgQS2g==",
   "success": true,
-  "projectFilePath": "D:\\GIT\\School Project\\My Branch 2\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\USER\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
   ],
   "logs": []
 }

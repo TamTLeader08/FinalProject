@@ -30,5 +30,19 @@ namespace MP3_Final.UserControls
         }
 
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(MaterialDesignThemes.Wpf.PackIconKind), typeof(EditPlaylistButton));
+
+        public static readonly RoutedEvent PopupClickEvent = EventManager.RegisterRoutedEvent(
+        "PopupClick", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(EditPlaylistButton));
+
+        public event RoutedEventHandler PopupClick
+        {
+            add { AddHandler(PopupClickEvent, value); }
+            remove { AddHandler(PopupClickEvent, value); }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(PopupClickEvent));
+        }
     }
 }

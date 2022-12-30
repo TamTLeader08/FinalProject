@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Icon ="/IconApp/Spotify.ico"
-        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" Height="720" Width="1080" MinWidth="1080" MinHeight="720">
+        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" MinWidth="1080" MinHeight="720" Height="720" Width="1080" WindowState="Maximized">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -145,39 +145,11 @@
 
                     </Border>
 
-                    <ScrollViewer   Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer
+                        Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                        <StackPanel Margin="30,15,30,1">
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                        <StackPanel Name="songMenu" Margin="30,15,30,1">
+                            <!--Danh sách bài hát-->
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -200,13 +172,13 @@
 
                     <Ellipse Height="90" Width="90"  VerticalAlignment="Center" Margin="10 5 0 5"  RenderTransformOrigin="0.487,0.072">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="/Images/m2.png"/>
+                            <ImageBrush x:Name="staticImage" ImageSource="/Images/m2.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Stretch" Margin="5,0,5,0" Height="48">
-                        <TextBlock Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="titleTxtBlock" Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock x:Name="singerTxtBlock" Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
                     </StackPanel>
 
 
@@ -312,7 +284,16 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
                 </Border.Effect>
-                <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ScrollViewer
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                    <StackPanel>
+                        <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <!--Danh sách bài hát-->
+                    </StackPanel>
+                </ScrollViewer>
+
             </Border>
         </Grid>
     </Grid>

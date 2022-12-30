@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MP3_Final.UserControls
@@ -12,7 +13,23 @@ namespace MP3_Final.UserControls
         {
             InitializeComponent();
         }
+        public int IndexOfSong
+        {
+            get { return (int)GetValue(IndexOfSongProperty); }
+            set { SetValue(IndexOfSongProperty, value); }
+        }
 
+        public static readonly DependencyProperty IndexOfSongProperty = DependencyProperty.Register
+            ("IndexOfSong", typeof(int), typeof(SongName));
+
+        public string Path
+        {
+            get { return (string)GetValue(PathProperty); }
+            set { SetValue(PathProperty, value); }
+        }
+
+        public static readonly DependencyProperty PathProperty = DependencyProperty.Register
+            ("Path", typeof(string), typeof(SongName));
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -62,5 +79,29 @@ namespace MP3_Final.UserControls
 
         public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register
             ("IsActive", typeof(bool), typeof(SongName));
+
+        public static readonly RoutedEvent MLeftBtnD_BdSongNameEvent = EventManager.RegisterRoutedEvent(
+        "MLeftBtnD_BdSongName", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SongName));
+
+        public event RoutedEventHandler MLeftBtnD_BdSongName
+        {
+            add { AddHandler(Border.MouseLeftButtonDownEvent, value); }
+            remove { AddHandler(Border.MouseLeftButtonDownEvent, value); }
+        }
+
+        private void AddAlbumBtn_PopupClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("adding successfully");
+        }
+
+        public event Action<object> DeleteClick;
+        private void DelSongBtn_PopupClick(object sender, RoutedEventArgs e)
+        {
+            if (DeleteClick != null)
+            {
+                DeleteClick(this);
+            }
+        }
+
     }
 }
