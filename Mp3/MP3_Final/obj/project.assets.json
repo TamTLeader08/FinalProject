@@ -140,11 +140,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "projectUniqueName": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
       "projectName": "MP3_Final",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "projectPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\FinalProject\\Mp3\\MP3_Final\\obj\\",
+      "outputPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

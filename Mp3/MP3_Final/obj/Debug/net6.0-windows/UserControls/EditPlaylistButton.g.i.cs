@@ -65,7 +65,7 @@ namespace MP3_Final.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MP3_Final;V1.0.0.0;component/usercontrols/editplaylistbutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MP3_Final;component/usercontrols/editplaylistbutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControls\EditPlaylistButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

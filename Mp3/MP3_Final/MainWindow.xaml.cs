@@ -54,11 +54,16 @@ namespace MP3_Final
         public MainWindow()
         {
             InitializeComponent();
-            LoadPlayList(head);
+            if (!System.IO.Directory.Exists(head))
+            {
+                System.IO.Directory.CreateDirectory(head);
+            }
             if (!System.IO.File.Exists(fav))
             {
                 using (System.IO.File.Create(fav)) ;
             }
+
+            LoadPlayList(head);
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
