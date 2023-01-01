@@ -25,28 +25,21 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-
             <Button x:Name="Playlist" Style="{StaticResource staticButton}" Grid.Row="0">
                 <TextBlock Text="Home"/>
             </Button>
-            <Button x:Name="Favorite" Style="{StaticResource menuButton}" Grid.Row="1" Click="Favorite_Click">
-                <TextBlock Text="Favorite" Style="{StaticResource ResourceKey=menuTitle}"/>
+            <Button x:Name="Favorite" Style="{StaticResource menuButton}" Grid.Row="1" Click="Favorite_Click"
+                    Content="Favorite">
             </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="2">
-                <TextBlock Text="Album 1" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="3">
-                <TextBlock Text="Album 2" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="4">
-                <TextBlock Text="Album 3" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-
-
+            <Button Style="{StaticResource menuButton}" Content="Thêm album" Grid.Row="2" Click="AddPlayList"/>
+            <ScrollViewer Grid.Row="3"
+                        Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="listMenu"/>
+            </ScrollViewer>
+            
             <StackPanel Grid.Row="5">
                 <TextBlock Text="MORE OPTION" Margin="20 10 20 20" Foreground="#1fae7e" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin ="0 -10 0 0"  Height="50" >
@@ -65,7 +58,7 @@
                         <materialDesign:PackIcon Kind="FileUpload" Style="{StaticResource optionButtonIcon}" MouseLeftButtonDown="FileUpload_MouseLeftButtonDown"/>
                     </Button>
 
-                    <Button Style="{StaticResource optionButton}">
+                    <Button Style="{StaticResource optionButton}" Click="DeletePlayList">
                         <materialDesign:PackIcon Kind="DeleteEmpty" Style="{StaticResource optionButtonIcon}"/>
                     </Button>
 

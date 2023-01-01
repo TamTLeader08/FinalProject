@@ -34,8 +34,10 @@ namespace MP3_Final
         string fileName = string.Empty, path = string.Empty;
         List<Song> songs = new List<Song>();
         int i = 0;// bien toan cuc chi vi tri bai hat trong playlist
-        string playlist1 = @"Playlist1.txt", playlist2 = @"Playlist2.txt", playlist3 = @"Playlist3.txt";
-        string fav = @"Favorite.txt";
+        public static string tail = @".txt";
+        public static string head = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()) + @"\PlayList\";
+        string fav = head + @"Favorite.txt";
+        public static string currentPlaylist = string.Empty;
 
         DispatcherTimer timer;
 
@@ -52,9 +54,10 @@ namespace MP3_Final
         public MainWindow()
         {
             InitializeComponent();
+            LoadPlayList(head);
             if (!System.IO.File.Exists(fav))
             {
-                System.IO.File.Create(fav);
+                using (System.IO.File.Create(fav)) ;
             }
 
             timer = new DispatcherTimer();
@@ -448,6 +451,100 @@ namespace MP3_Final
         {
             Music_Player.Children.Remove((UserControl1)sender);
         }
+
+        private void PlayListClick(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button button = sender as System.Windows.Controls.Button;
+            string path = head + button.Content.ToString() + tail;
+            currentPlaylist = button.Tag.ToString();
+            OpenPlayList(path);
+        }
+
+        void OpenPlayList(string path)
+        {
+            if (!System.IO.File.Exists(path))
+            {
+                using (System.IO.File.Create(path)) ;
+            }
+            string[] contents = System.IO.File.ReadAllLines(path);
+
+            string line;
+            bool heart = false;
+            songMenu.Children.Clear();
+
+            foreach (var file in contents)
+            {
+                StreamReader reader = new StreamReader(fav);
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line == file)
+                    {
+                        heart = true;
+                        break;
+                    }
+                }
+                reader.Close();
+                Song song = new Song(file, heart);
+                heart = false;
+                songs.Add(song);
+                int index = songs.Count - 1;
+                Add_UcSongName(songs[index], index);
+            }
+        }
+
+        private void AddPlayList(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button button = new System.Windows.Controls.Button();
+            button.Style = System.Windows.Application.Current.TryFindResource("menuButton") as Style;
+            button.Content = "Album mới";
+            button.Tag = ButtonToPath(button.Content.ToString());
+            button.Click += PlayListClick;
+            button.MouseRightButtonDown += ChangePlayListName;
+            string path = ButtonToPath(button.Content.ToString());
+            if (System.IO.File.Exists(path))
+            {
+                System.Windows.MessageBox.Show("Album bị trùng tên!");
+            }
+            else
+            {
+                using (System.IO.File.Create(path)) ;
+                listMenu.Children.Add(button);
+            }    
+        }
+
+        void LoadPlayList(string path)
+        {
+            string[] files = Directory.GetFiles(path);
+            listMenu.Children.Clear();
+            foreach (var file in files)
+            {
+                if (System.IO.Path.GetFileName(file) != "Favorite.txt")
+                {
+                    System.Windows.Controls.Button button = new System.Windows.Controls.Button();
+                    button.Style = System.Windows.Application.Current.TryFindResource("menuButton") as Style;
+                    button.Content = GetFileNameOnly(System.IO.Path.GetFileName(file));
+                    button.Click += PlayListClick;
+                    button.MouseRightButtonDown += ChangePlayListName;
+                    button.Tag = file;
+                    listMenu.Children.Add(button);
+                }
+            }    
+        }
+
+        public static string GetFileNameOnly(string fullName)
+        {
+            string res = "";
+            foreach (var i in fullName)
+            {
+                if (i == '.')
+                {
+                    return res;
+                }
+                res += i;
+            }
+            return res;
+        }
+
         private void previousbtn_Click(object sender, RoutedEventArgs e)
         {
             if (i > 0)
@@ -479,6 +576,37 @@ namespace MP3_Final
             //media.Open(new Uri(songs[i].path));
             //media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             //media.Play();
+        }
+
+        private void ChangePlayListName(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Controls.Button button = sender as System.Windows.Controls.Button;
+            string old = head + button.Content.ToString() + tail;
+            ChangeAlbumName change = new ChangeAlbumName(button.Content.ToString());
+            change.ShowDialog();
+            button.Content = change.name;
+            string newName = ButtonToPath(button.Content.ToString());
+            button.Tag = newName;
+            System.IO.File.Move(old, newName);
+        }
+
+        private void DeletePlayList(object sender, RoutedEventArgs e)
+        {
+            foreach (var playList in listMenu.Children)
+            {
+                System.Windows.Controls.Button button = playList as System.Windows.Controls.Button;
+                if (button.Tag.ToString() == currentPlaylist)
+                {
+                    listMenu.Children.Remove(button);
+                    System.IO.File.Delete(button.Tag.ToString());
+                    return;
+                }
+            }
+        }
+
+        public static string ButtonToPath(string content)
+        {
+            return head + content + tail;
         }
 
         private void darkmodeBtn_Click(object sender, RoutedEventArgs e)
