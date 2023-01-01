@@ -4,13 +4,22 @@
 winexe
 C#
 .cs
+<<<<<<< Updated upstream
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
+=======
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
+>>>>>>> Stashed changes
 MP3_Final
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+<<<<<<< Updated upstream
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\App.xaml
 41664143248
+=======
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\App.xaml
+6799929042
+>>>>>>> Stashed changes
 1-913308027
 8-72871304
 206-346640666

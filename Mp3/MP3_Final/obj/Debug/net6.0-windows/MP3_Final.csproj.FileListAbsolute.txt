@@ -463,3 +463,14 @@ C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-wi
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\ref\MP3_Final.dll
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.g.cs
 C:\Users\admin\Desktop\MP3APP\TT4\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.baml
+<<<<<<< Updated upstream
+=======
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\bin\Debug\net6.0-windows\TagLibSharp.dll
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.g.cs
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControls\EditPlaylistButton.g.cs
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\UserControl1.baml
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\ChangeAlbumName.g.cs
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\ChangeAlbumName.baml
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\AddToPlayList.g.cs
+D:\laptrinh\hocki3\laptrinhtrucquan\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\AddToPlayList.baml
+>>>>>>> Stashed changes
