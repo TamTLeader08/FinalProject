@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {}
+    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {
+    "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+        "projectUniqueName": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
         "projectName": "MP3_Final",
-        "projectPath": "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\MP3APP\\TT4\\FinalProject\\Mp3\\MP3_Final\\obj\\",
+        "projectPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\laptrinh\\hocki3\\laptrinhtrucquan\\FinalProject\\Mp3\\MP3_Final\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -72,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
