@@ -37,7 +37,7 @@ namespace MP3_Final
                 if (System.IO.Path.GetFileName(file) != "Favorite.txt")
                 {
                     System.Windows.Controls.Button button = new System.Windows.Controls.Button();
-                    button.Style = System.Windows.Application.Current.TryFindResource("menuButton") as Style;
+                    button.Style = System.Windows.Application.Current.TryFindResource("albumButton") as Style;
                     button.Content = MainWindow.GetFileNameOnly(System.IO.Path.GetFileName(file));
                     button.Click += PlayListClick;
                     listPlayList.Children.Add(button);
