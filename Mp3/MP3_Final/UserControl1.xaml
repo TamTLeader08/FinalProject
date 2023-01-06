@@ -19,19 +19,22 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
             </Border.Effect>
+
+
+            <ScrollViewer
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                <StackPanel>
+                    <Button Click="CloseClick">
+                        <TextBlock Text="click"/>
+                    </Button>
+                    <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding ElementName=songName, Path=Number}" Foreground="{StaticResource color2}" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <!--Danh sách bài hát-->
+                </StackPanel>
+            </ScrollViewer>
+
             
-
-                <ScrollViewer
-                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-
-                    <StackPanel Name="songMenu" Margin="30,15,30,1">
-                        <!--Danh sách bài hát-->
-                        <Button Click="CloseClick">
-                            <TextBlock Text="click"/>
-                        </Button>
-                            
-                    </StackPanel>
-                </ScrollViewer>
             
         </Border>
         

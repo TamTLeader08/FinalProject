@@ -22,12 +22,18 @@
     <Compile Update="UserControls\SongName.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\songLyricView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddToPlayList.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ChangeAlbumName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ColorBackGround\StyleList.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
@@ -40,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\SongName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\songLyricView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
