@@ -334,6 +334,7 @@ namespace MP3_Final
         // MouseLeftButtonDown Event of usercontrol songname
         private void Uc_MLeftBtnD_BdSongName(object sender, RoutedEventArgs e)
         {
+            if (onSearch) playSearch = true;
             SongName uc = (SongName)sender;
             current = uc.Path;
             try
@@ -350,7 +351,6 @@ namespace MP3_Final
                     //    fileName = subSongs[i].path;
                     fileName = uc.Path;
                     media.Open(new Uri(fileName));
-                    Coverload();
                     media.Play();
                     pausebtn.Content = pausebtn.FindResource("Pause");
                     Storyboard s = (Storyboard)pausebtn.FindResource("spinellipse");
@@ -388,7 +388,6 @@ namespace MP3_Final
                 if (remainUc.Path != CurrentSong.Path)
                     remainUc.IsActive = false;
             }
-            current = CurrentSong.Path;
         }
         private void FileUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -466,18 +465,34 @@ namespace MP3_Final
         }
         private void Media_Ended(object sender, EventArgs e)
         {
-            if (i < songs.Count - 1)
+            i++;
+            if (onSearch && playSearch)
             {
-                ++i;
+                if (i == search.Count) i = 0;
+                current = search[i].path;
                 media.Stop();
-                if (!shuffleMedia)
-                    media.Open(new Uri(songs[i].path));
-                else
-                    media.Open(new Uri(subSongs[i].path));
+                media.Open(new Uri(search[i].path));
                 media.Position = TimeSpan.Zero;// chay nhac tu 00:00
-                Coverload();
                 media.Play();
+                return;
             }
+            if (i == songs.Count)
+            {
+                i = 0;
+            }
+            media.Stop();
+            if (!shuffleMedia)
+            {
+                current = songs[i].path;
+                media.Open(new Uri(songs[i].path));
+            }
+            else
+            {
+                current = subSongs[i].path;
+                media.Open(new Uri(subSongs[i].path));
+            }
+            media.Position = TimeSpan.Zero;// chay nhac tu 00:00
+            media.Play();
         }
 
         private void replaybtn_Click(object sender, RoutedEventArgs e)
@@ -511,11 +526,12 @@ namespace MP3_Final
 
         private void nextbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (onSearch)
+            if (onSearch && playSearch)
             {
                 if (i < search.Count - 1)
                     ++i;
                 else i = 0;
+                current = search[i].path;
                 media.Stop();
                 media.Open(new Uri(search[i].path));
                 media.Position = TimeSpan.Zero;// chay nhac tu 00:00
@@ -528,9 +544,15 @@ namespace MP3_Final
             else i = 0;
             media.Stop();
             if (!shuffleMedia)
+            {
+                current = songs[i].path;
                 media.Open(new Uri(songs[i].path));
+            }
             else
+            {
+                current = subSongs[i].path;
                 media.Open(new Uri(subSongs[i].path));
+            }
             media.Position = TimeSpan.Zero;// chay nhac tu 00:00
             media.Play();
         }
@@ -538,6 +560,7 @@ namespace MP3_Final
         private void Favorite_Click(object sender, RoutedEventArgs e)
         {
             onSearch = false;
+            playSearch = false;
             StreamReader reader = new StreamReader(fav);
             i = 0;
             songs = new List<Song>();
@@ -590,6 +613,7 @@ namespace MP3_Final
         private void PlayListClick(object sender, RoutedEventArgs e)
         {
             onSearch = false;
+            playSearch = false;
             System.Windows.Controls.Button button = sender as System.Windows.Controls.Button;
             string path = head + button.Content.ToString() + tail;
             currentPlaylist = button.Tag.ToString();
@@ -685,7 +709,7 @@ namespace MP3_Final
 
         private void previousbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (onSearch)
+            if (onSearch && playSearch)
             {
                 if (i < search.Count - 1)
                     ++i;
@@ -858,6 +882,7 @@ namespace MP3_Final
             {
                 songMenu.Children.Clear();
                 onSearch = false;
+                playSearch = false;
             }
             var dialog = new Microsoft.Win32.OpenFileDialog();
             // code open 1 file
@@ -905,6 +930,7 @@ namespace MP3_Final
             {
                 songMenu.Children.Clear();
                 onSearch = false;
+                playSearch = false;
             }
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
@@ -999,6 +1025,7 @@ namespace MP3_Final
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
         bool onSearch = false;
+        bool playSearch = false;
         private void searchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
             onSearch = true;
