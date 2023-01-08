@@ -254,7 +254,7 @@
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Search your song ..."
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                BorderThickness="0" />
+                                BorderThickness="0" TextChanged="searchTB_TextChanged" />
                             </Grid>
                         </materialDesign:ColorZone>
                         <!--ControlBar-->
