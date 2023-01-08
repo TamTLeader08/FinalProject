@@ -1037,13 +1037,25 @@ namespace MP3_Final
             string convertedLine;
             while ((line = reader.ReadLine()) != null)
             {
+                TagLib.File file = TagLib.File.Create(line);
+                string title = file.Tag.Title;
+                string[] artists = file.Tag.Performers;
                 convertedLine = RemoveSign(line);
-                int flag = 0;
+                int flag = 0, flagArtist = 0, flagTitle = 0, count = 0;
                 foreach (var keyword in keywords)
                 {
-                    if (keyword != "" && System.Text.RegularExpressions.Regex.IsMatch(convertedLine, RemoveSign(keyword), System.Text.RegularExpressions.RegexOptions.IgnoreCase)) { flag++; }
+                    if (keyword != "")
+                    {
+                        count++;
+                        if (System.Text.RegularExpressions.Regex.IsMatch(convertedLine, RemoveSign(keyword), System.Text.RegularExpressions.RegexOptions.IgnoreCase)) { flag++; }
+                        if (title != null && System.Text.RegularExpressions.Regex.IsMatch(RemoveSign(title), RemoveSign(keyword), System.Text.RegularExpressions.RegexOptions.IgnoreCase)) { flagTitle++; }
+                        foreach (var artist in artists)
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(RemoveSign(artist), RemoveSign(keyword), System.Text.RegularExpressions.RegexOptions.IgnoreCase)) { flagArtist++; break; }
+                        }
+                    }
                 }
-                if (flag > keywords.Length / 2 && flag >= 1)
+                if ((flag > count / 2 && flag >= 1) || (flagArtist > count / 2 && flagArtist >= 1) || (flagTitle > count / 2 && flagTitle >= 1))
                 {
                     StreamReader reader2 = new StreamReader(fav);
                     string line2;
