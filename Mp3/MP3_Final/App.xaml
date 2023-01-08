@@ -12,12 +12,46 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="/ColorBackGround/StyleList.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="controlButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#ffffff"/>
+                <Setter Property="Width" Value="30"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5 0 0 0"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#00a85b"/>
+                        <Setter Property="Foreground" Value="#f0f0f0"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="controlButtonIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Width" Value="15"/>
+                <Setter Property="Height" Value="15"/>
+
+            </Style>
+
             <Style x:Key="menuButton" TargetType="Button">
-                <Setter Property="Background" Value="#02be68"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="Height" Value="50"/>
-                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="auto"/>
                 <Setter Property="FontSize" Value="25"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -25,98 +59,80 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                            <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Stretch" 
-                                VerticalAlignment="Center" Margin="35 0 0 0"/>
+                                VerticalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#30ad9a"/>
+                        <Setter Property="Background" Value="#1aab7a"/>
                         <Setter Property="Foreground" Value="WhiteSmoke"/>
                         <Setter Property="Tag" Value="Visible"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="staticButton" TargetType="Button">
-                <Setter Property="Background" Value="#02be68"/>
+            <Style x:Key="menuButtonTitle" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Height" Value="50"/>
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="FontSize" Value="30"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter Property="Tag" Value="Collapsed"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
-                                <ContentPresenter HorizontalAlignment="Stretch" 
-                                VerticalAlignment="Center" Margin="35 0 0 0"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="FontFamily" Value="Montserrat"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="20 0 0 0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
 
-            <Style x:Key="textButton" TargetType="Button">
-                <Setter Property="Background" Value="#02be68"/>
+            <Style x:Key="menuButtonIcon" TargetType="materialDesign:PackIcon">
                 <Setter Property="Foreground" Value="White"/>
-                <Setter Property="FontSize" Value="30"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter Property="Tag" Value="Collapsed"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Stretch" 
-                                VerticalAlignment="Center" Margin="0 0 0 0"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+                <Setter Property="Width" Value="20"/>
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Margin" Value="20 0 0 0"/>
 
-            <Style x:Key="titleText" TargetType="TextBlock">
-                <!--<Setter Property="Foreground" Value="Black"/>-->
-                <Setter Property="FontSize" Value="36"/>
-                <Setter Property="FontWeight" Value="Bold"/>
             </Style>
 
             <Style x:Key="menuTitle" TargetType="TextBlock">
-                <!--<Setter Property="Foreground" Value="Black"/>-->
-                <Setter Property="FontSize" Value="22"/>
-                <!--<Setter Property="FontWeight" Value="Bold"/>-->
-                <!--<Setter Property="Margin" Value="60 30 0 15"/>-->
+                <Setter Property="Foreground" Value="#c2e8dc"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="22 0 0 0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+
             </Style>
 
-            <Style x:Key="textboxSearch" TargetType="TextBox">
-                
+
+            <Style x:Key="PopupButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Tag" Value="Collapsed"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="TextBoxBase">
-                            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" SnapsToDevicePixels="True"
-                                    BorderThickness="1" BorderBrush="#e0e6ed">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden"
-                                              VerticalScrollBarVisibility="Hidden"/>
-
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" />
                             </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#1aab7a"/>
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                        <Setter Property="Tag" Value="Visible"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="optionButtonIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Width" Value="20"/>
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Foreground" Value="White"/>
 
             </Style>
 
@@ -151,38 +167,34 @@
 
             </Style>
 
-            <Style x:Key="optionButton" TargetType="Button">
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Foreground" Value="#ffffff"/>
-                <Setter Property="Width" Value="40"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Margin" Value="10 0"/>
+            <Style x:Key="albumButton" TargetType="Button">
+                <Setter Property="Background" Value="#02be68"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter  Property="Template">
+                <Setter Property="Tag" Value="Collapsed"/>
+                <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="50">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" Margin="35 0 0 0"/>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#f0f0f0" />
-                        <Setter Property="Foreground" Value="#f0f0f0"/>
+                        <Setter Property="Background" Value="#30ad9a"/>
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                        <Setter Property="Tag" Value="Visible"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style x:Key="optionButtonIcon" TargetType="materialDesign:PackIcon">
-                <Setter Property="Width" Value="40"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Foreground" Value="#00a85b"/>
 
-            </Style>
-            
-            
+
         </ResourceDictionary>
 
 

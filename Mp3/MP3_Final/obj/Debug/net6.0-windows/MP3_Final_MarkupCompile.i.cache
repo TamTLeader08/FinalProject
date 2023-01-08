@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\baohe\source\repos\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
+C:\Users\baohe\source\repos\ThanhTam6\FinalProject\Mp3\MP3_Final\obj\Debug\net6.0-windows\
 MP3_Final
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\baohe\source\repos\FinalProject\Mp3\MP3_Final\App.xaml
-31703660980
+C:\Users\baohe\source\repos\ThanhTam6\FinalProject\Mp3\MP3_Final\App.xaml
+81579465847
 1-913308027
-7-2117062227
+111837357017
 2061857284069
-MainWindow.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;
+AddToPlayList.xaml;ChangeAlbumName.xaml;ColorBackGround\StyleList.xaml;MainWindow.xaml;UserControl1.xaml;UserControls\EditPlaylistButton.xaml;UserControls\SongName.xaml;Views\songLyricView.xaml;
 
-True
+False
 

@@ -8,245 +8,358 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Icon ="/IconApp/Spotify.ico"
-        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" Height="720" Width="1080" MinWidth="1080" MinHeight="720">
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="Spotify Lite" WindowStartupLocation ="CenterScreen" WindowState="Maximized" MinWidth="1080" MinHeight="720" Height="720" Width="1080" >
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
-    <Grid x:Name="Music_Player">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="270"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Border x:Name="mainBorder" MouseDown="Border_MouseDown" CornerRadius="10"
+            BorderThickness="1"
+            Background="{DynamicResource color1}">
 
-        <!--Left Section-->
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+
+        <Grid x:Name="Music_Player">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="225"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Button x:Name="Playlist" Style="{StaticResource staticButton}" Grid.Row="0">
-                <TextBlock Text="Home"/>
-            </Button>
-            <Button x:Name="Favorite" Style="{StaticResource menuButton}" Grid.Row="1" Click="Favorite_Click">
-                <TextBlock Text="Favorite" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="2">
-                <TextBlock Text="Album 1" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="3">
-                <TextBlock Text="Album 2" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
-            <Button Style="{StaticResource menuButton}" Grid.Row="4">
-                <TextBlock Text="Album 3" Style="{StaticResource ResourceKey=menuTitle}"/>
-            </Button>
 
 
-            <StackPanel Grid.Row="5">
-                <TextBlock Text="MORE OPTION" Margin="20 10 20 20" Foreground="#1fae7e" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal" Margin ="0 -10 0 0"  Height="50" >
-                    <Button Style="{StaticResource optionButton}" Click="Button_Click">
-                        <materialDesign:PackIcon Kind="VolumeHigh" Style="{StaticResource optionButtonIcon}"/>
-                    </Button>
-                    <Slider x:Name="sldVolume" Width="150" Height="20" Margin="10 5 0 0" ValueChanged="sldVolume_ValueChanged" LargeChange="0.1" Maximum="1" SmallChange="0.01" Value="0.5" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource optionButton}">
-                        <materialDesign:PackIcon Kind="FolderUpload" Style="{StaticResource optionButtonIcon}" MouseLeftButtonDown="FolderUpload_MouseLeftButtonDown"/>
-                    </Button>
-
-                    <Button Style="{StaticResource optionButton}">
-                        <materialDesign:PackIcon Kind="FileUpload" Style="{StaticResource optionButtonIcon}" MouseLeftButtonDown="FileUpload_MouseLeftButtonDown"/>
-                    </Button>
-
-                    <Button Style="{StaticResource optionButton}">
-                        <materialDesign:PackIcon Kind="DeleteEmpty" Style="{StaticResource optionButtonIcon}"/>
-                    </Button>
-
-                    <Button x:Name="darkmodeBtn" Style="{StaticResource optionButton}" Click="darkmodeBtn_Click" >
-                        <Button.Resources>
-                            <materialDesign:PackIcon x:Key="Light" Kind="ShieldMoonOutline" Style="{StaticResource optionButtonIcon}"/>
-                            <materialDesign:PackIcon x:Key="Dark" Kind="ShieldMoon" Style="{StaticResource optionButtonIcon}"/>
-                        </Button.Resources>
-                        <DynamicResource ResourceKey="Light"/>
-                    </Button>
-                </StackPanel>
-            </StackPanel>
-
-        </Grid>
 
 
-        <!--Center section-->
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.7*"></RowDefinition>
-                <RowDefinition Height="8*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <!--Searchbar-->
-            <materialDesign:ColorZone x:Name="searchBar"
-                    HorizontalAlignment="Stretch"
-                    
-                    Padding="8,4,8,4"
-                    Panel.ZIndex="1"
-                    materialDesign:ElevationAssist.Elevation="Dp2"
-                    CornerRadius="22"
-                    Mode="Standard" Height="40" VerticalAlignment="Center">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button
-                            Style="{StaticResource MaterialDesignToolButton}">
-                        <materialDesign:PackIcon
-                                Kind="Search"
-                                Opacity="0.9" />
-                    </Button>
-                    <TextBox x:Name="searchTB"
-                            Grid.Column="1"
-                            MinWidth="200"
-                            FontSize="14"
-                            Margin="8,0,0,0"
-                            VerticalAlignment="Center"
-                            materialDesign:HintAssist.Hint="Search your song ..."
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0" TextChanged="searchTB_TextChanged" />
-                </Grid>
-            </materialDesign:ColorZone>
+            <!--Left Section-->
 
-            <!--Music List-->
-            <Border Grid.Row="1" CornerRadius="10" Margin="0 5 0 0" Height="auto">
-                <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#30ad9a" Offset="0"/>
-                        <GradientStop Color="#18c274" Offset="1"/>
-                    </LinearGradientBrush>
+            <Border x:Name="menuBorder" Grid.Column="0" CornerRadius="10 0 0 0" Height="auto">
+                <Border.Background >
+                    <DynamicResource ResourceKey="greenBgr1"/>
                 </Border.Background>
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
-                </Border.Effect>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Opacity="0.07" CornerRadius="20" Grid.ColumnSpan="2" >
-                        <Border.Background>
-                            <ImageBrush ImageSource="/Images/m3.jpg"/>
-                        </Border.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="3.5*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Spotify" Margin="10 0 0 0" Width="50" Height="50" VerticalAlignment="Center" Foreground="{StaticResource color2}"/>
+                        <TextBlock Text="Music Player" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="25" Foreground="{StaticResource color2}"/>
+                    </StackPanel>
+                    <Button x:Name="Playlist" Style="{StaticResource menuButton}" Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Home" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Favorite" Style="{StaticResource menuButton}" Grid.Row="2" Click="Favorite_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CardsPlayingHeartMultipleOutline" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Favorite" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
 
-                    </Border>
+                    <Button Style="{StaticResource menuButton}" Click="LoadFileButton"  Grid.Row="3">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileUpload" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Load File" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
 
-                    <ScrollViewer   Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Button Style="{StaticResource menuButton}" Click="LoadFolderButton"  Grid.Row="4">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FolderUpload" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Load Folder" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
 
-                        <StackPanel Margin="30,15,30,1">
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="01" Title="TÊN BÀI 1" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="02" Title="TÊN BÀI 2" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="03" Title="TÊN BÀI 3" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="04" Title="TÊN BÀI 4" Singer="Singer" Time="3:56"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
-                            <uc:SongName Number="06" Title="TÊN BÀI 6" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="07" Title="TÊN BÀI 7" Singer="Singer" Time="4:38"/>
-                            <uc:SongName Number="05" Title="TÊN BÀI 5" Singer="Singer" Time="3:22"/>
+                    <Button Style="{StaticResource menuButton}" Grid.Row="5">
+
+                    </Button>
+
+                    <ToggleButton x:Name="MoreOptionToggleBtn" Grid.Row="5">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewGridPlusOutline" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="More Option" Style="{StaticResource menuButtonTitle}"/>
+                            <materialDesign:PackIcon Kind="Play" VerticalAlignment="Center" Foreground="{StaticResource color2}" Margin="20 0 0 0" Width="25" Height="25"/>
+                        </StackPanel>
+
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                        <ToggleButton.Style >
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontSize" Value="25"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                <Setter Property="Tag" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#1aab7a"/>
+                                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                        <Setter Property="Tag" Value="Visible"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+
+                    <Popup Height="120" Width="180"  IsOpen="{Binding IsChecked, ElementName=MoreOptionToggleBtn}" AllowsTransparency="True" StaysOpen="False" PlacementTarget="{Binding ElementName=MoreOptionToggleBtn }" Placement="Right" VerticalOffset="10" HorizontalOffset="0">
+                        <Border x:Name="BorderPopupMoreOption">
+                            <Border.Background>
+                                <DynamicResource ResourceKey="greenBgr1"/>
+                            </Border.Background>
+                            <StackPanel>
+                                <Button x:Name="darkmodeBtn" Style="{StaticResource PopupButton}" Click="darkmodeBtn_Click" >
+                                    <Button.Resources>
+                                        <StackPanel x:Key="Light"  Orientation="Horizontal">
+                                            <materialDesign:PackIcon Margin="10 0 0 0"  Kind="ShieldMoon" Style="{StaticResource optionButtonIcon}"/>
+
+                                            <TextBlock Text="Dark Mode" Style="{StaticResource menuButtonTitle}"/>
+
+                                        </StackPanel>
+                                        <StackPanel x:Key="Dark"  Orientation="Horizontal">
+                                            <materialDesign:PackIcon Margin="10 0 0 0"  Kind="ShieldMoonOutline" Style="{StaticResource optionButtonIcon}"/>
+                                            <TextBlock Text="Light Mode" Style="{StaticResource menuButtonTitle}"/>
+                                        </StackPanel>
+                                    </Button.Resources>
+                                    <DynamicResource ResourceKey="Light"/>
+
+                                </Button>
+
+                                <Button Click="DeletePlayList" Style="{StaticResource PopupButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Margin="10 0 0 0" Kind="DeleteEmpty" Style="{StaticResource optionButtonIcon}"/>
+                                        <TextBlock Text="Delete Playlist" Style="{StaticResource menuButtonTitle}"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Style="{StaticResource PopupButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Margin="10 0 0 0" Kind="InformationOutline" Style="{StaticResource optionButtonIcon}"/>
+                                        <TextBlock Text="About us" Style="{StaticResource menuButtonTitle}"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+
+                    </Popup>
+
+                    <Button Click="CreateAlbumClick" Style="{StaticResource menuButton}"  Grid.Row="6" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PlaylistMusic" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Your Playlists" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Click="AddPlayList" Style="{StaticResource menuButton}"  Grid.Row="7" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PlusBox" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Create Playlist" Style="{StaticResource menuButtonTitle}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Rectangle Grid.Row="8" Stroke="White" Height="1" StrokeThickness="2"/>
+
+                    <ScrollViewer Grid.Row="9" VerticalAlignment="Top"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                        <StackPanel Name="listMenu">
+                            <!--Danh sách playlist-->
+
+                            <!--<TextBlock Text="Playlist 1"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 2"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 3"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 4"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 5"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 1"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 1"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 2"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 3"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 4"  Style="{StaticResource menuTitle}"/>
+                            <TextBlock Text="Playlist 5"  Style="{StaticResource menuTitle}"/>-->
                         </StackPanel>
                     </ScrollViewer>
+
+
+
                 </Grid>
             </Border>
 
-            <!--Player-->
-            <Border Grid.Row="2" CornerRadius="20" Margin="0 10 0 10" Height="auto">
+
+
+            <!--Center section-->
+            <Border x:Name="CenterBorder"  CornerRadius="0 10 0 0" Grid.Column="1" Height="auto">
                 <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#30ad9a" Offset="1"/>
-                        <GradientStop Color="#18c274" Offset="0"/>
-                    </LinearGradientBrush>
+
+                    <DynamicResource ResourceKey="greenBgr1"/>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Search-->
+                        <materialDesign:ColorZone x:Name="searchBar"
+                            Background="{StaticResource foreGrSearchBar}"                              
+                            Padding="8,4,8,4"
+                            Panel.ZIndex="1"
+                            materialDesign:ElevationAssist.Elevation="Dp2"
+                            CornerRadius="18"
+                            Margin="30 0 0 0"
+                            Mode="Standard" Width="600" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                                Style="{StaticResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon
+                                    Kind="Search"
+                                    Opacity="0.9" />
+                                </Button>
+                                <TextBox x:Name="searchTB"
+                                Grid.Column="1"
+                                MinWidth="200"
+                                FontSize="14"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Search your song ..."
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0" TextChanged="searchTB_TextChanged" />
+                            </Grid>
+                        </materialDesign:ColorZone>
+                        <!--ControlBar-->
+                        <StackPanel Margin="10 0 0 25" Orientation="Horizontal" Grid.Column="1">
+                            <Button  x:Name="minimizeBtn"  Style="{StaticResource controlButton}"
+                                Click="minimizeBtnClick">
+                                <materialDesign:PackIcon Kind="WindowMinimize" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+                            <Button x:Name="maximizeBtn"  Style="{StaticResource controlButton}"
+                                Click="maximizeBtnClick">
+                                <materialDesign:PackIcon Kind="DockWindow" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+                            <Button x:Name="closeBtn"  Style="{StaticResource controlButton}"
+                                Click="closeBtnClick">
+                                <materialDesign:PackIcon Kind="WindowClose" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+
+
+                    <Grid x:Name="centerUI" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--Hình ảnh của file nhạc-->
+                            <Ellipse Width="200" Height="200" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform x:Name="MyAnimatedTransform" Angle="0" />
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="img" ImageSource = "/Images/m2.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!--Thông tin bài hát-->
+                            <TextBlock Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1"  x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" />
+                        </Grid>
+
+                        <!--Songs List-->
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
+                                                                    HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel Name="songMenu" Margin="0 0 10 0">
+                                <!--Danh sách bài hát-->
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </Border>
+
+
+            <!--Player-->
+            <Border x:Name="PlayerBorder" Grid.Row="1" CornerRadius="0 0 10 10"  Grid.ColumnSpan="2" Height="auto">
+                <Border.Background>
+                    <DynamicResource ResourceKey="greenBgr2"/>
                 </Border.Background>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="270"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="160"/>
                     </Grid.ColumnDefinitions>
 
-                    <Ellipse Height="90" Width="90"  VerticalAlignment="Center" Margin="10 5 0 5"  RenderTransformOrigin="0.487,0.072">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="/Images/m2.png"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
+                    <Rectangle RadiusX="5" RadiusY="5" Height="75" Width="75" VerticalAlignment="Center" Margin="5 0 0 0">
+                        <Rectangle.Fill>
+                            <ImageBrush x:Name="staticImage" ImageSource="/Images/m2.png" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <WrapPanel  Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
 
-                    <StackPanel Grid.Column="1" VerticalAlignment="Stretch" Margin="5,0,5,0" Height="48">
-                        <TextBlock Text="Fake Love" Foreground="White" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Text="BTS" Foreground="#9ae5c3" FontSize="18" FontWeight="SemiBold"/>
-                    </StackPanel>
+                        <TextBlock x:Name="titleTxtBlock" Text="Có không giữ" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock x:Name="singerTxtBlock" Text="Singer Singer Singer" Foreground="#9ae5c3" FontSize="14" FontWeight="SemiBold"/>
+                    </WrapPanel>
 
+                    <Button Margin="-5 0 0 0" HorizontalAlignment="Center" Grid.Column="2" x:Name="heartbtn" Style="{StaticResource playerButton}" Click="heartbtn_Click">
+                        <materialDesign:PackIcon Kind="HeartOutline" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
 
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
                             <RowDefinition Height="1.5*"></RowDefinition>
-                            <RowDefinition Height="2.5*"></RowDefinition>
-                            <RowDefinition Height="4*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Margin="20 0 10 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock x:Name="tbStart" Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" />
-                            <TextBlock x:Name="tbEnd" Grid.Column="1" Text="0:00"  Foreground="#c2e8dc" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right"/>
 
-                        </Grid>
-
-                        <Slider Grid.Row="1" Name="slider_seek" Foreground="#ffffff" Width="auto" Height="auto" Margin="20 10 10 0" ValueChanged="slider_seek_ValueChanged" />
-
-                        <Grid Grid.Row="2" Margin="0 0 10 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                             <Button x:Name="shufflebtn" Style="{StaticResource playerButton}" Click="shufflebtn_Click">
                                 <materialDesign:PackIcon Kind="ShuffleVariant" Style="{StaticResource playerButtonIcon}"/>
                             </Button>
 
-                            <Button Grid.Column="1" x:Name="previousbtn" Style="{StaticResource playerButton}" Click="previousbtn_Click">
+                            <Button x:Name="previousbtn" Style="{StaticResource playerButton}" Click="previousbtn_Click">
                                 <materialDesign:PackIcon Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
                             </Button>
 
-                            <Button Grid.Column="2" x:Name="pausebtn" Style="{StaticResource playerButton}" Click="pausebtn_Click" >
+                            <Button x:Name="pausebtn" Style="{StaticResource playerButton}" Click="pausebtn_Click" >
                                 <Button.Resources>
                                     <materialDesign:PackIcon x:Key="Play" Kind="Play" Style="{StaticResource playerButtonIcon}"/>
                                     <materialDesign:PackIcon x:Key="Pause" Kind="Pause" Style="{StaticResource playerButtonIcon}"/>
@@ -254,7 +367,7 @@
                                         <DoubleAnimation
                                                 Storyboard.TargetName="MyAnimatedTransform"
                                                 Storyboard.TargetProperty="(RotateTransform.Angle)"
-                                                From="0.0" To="360" Duration="0:0:10" RepeatBehavior="0:5:0"/>
+                                                From="0.0" To="360" Duration="0:0:7" RepeatBehavior="Forever"/>
                                     </Storyboard>
                                     <Storyboard x:Key="stopellipse">
                                         <DoubleAnimation
@@ -266,54 +379,46 @@
                                 <DynamicResource ResourceKey="Play"/>
                             </Button>
 
-                            <Button Grid.Column="3" x:Name="nextbtn" Style="{StaticResource playerButton}" Click="nextbtn_Click">
+                            <Button x:Name="nextbtn" Style="{StaticResource playerButton}" Click="nextbtn_Click">
                                 <materialDesign:PackIcon Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
                             </Button>
 
-                            <Button Grid.Column="4" x:Name="replaybtn" Style="{StaticResource playerButton}" Click="replaybtn_Click">
+                            <Button x:Name="replaybtn" Style="{StaticResource playerButton}" Click="replaybtn_Click">
                                 <materialDesign:PackIcon Kind="Replay" Style="{StaticResource playerButtonIcon}"/>
                             </Button>
+                        </StackPanel>
 
-                            <Button Grid.Column="5" x:Name="heartbtn" Style="{StaticResource playerButton}" Click="heartbtn_Click">
-                                <materialDesign:PackIcon Kind="Heart" Style="{StaticResource playerButtonIcon}"/>
-                            </Button>
+
+                        <Grid Grid.Row ="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center"  x:Name="tbStart" Text="0:00"  Foreground="#ffffff" FontSize="16" FontWeight="SemiBold" />
+                            <Slider Grid.Column="1"   Name="slider_seek" Width="auto" Foreground="#ffffff" ValueChanged="slider_seek_ValueChanged" />
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center"  x:Name="tbEnd"  Text="0:00"  Foreground="#ffffff" FontSize="16" FontWeight="SemiBold"/>
                         </Grid>
                     </Grid>
 
+                    <Button Click="DisplayLyric" Grid.Column="4" Margin="-5 0 0 0" Style="{StaticResource playerButton}">
+                        <materialDesign:PackIcon Kind="StickerTextOutline" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+                    <StackPanel Grid.Column="5" Orientation="Horizontal" >
+                        <Button Margin="-2 0 0 0" Style="{StaticResource playerButton}" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="VolumeHigh" Style="{StaticResource playerButtonIcon}"/>
+                        </Button>
+
+                        <Slider x:Name="sldVolume" VerticalAlignment="Center" Foreground="#ffffff" Width="110" Height="20" ValueChanged="sldVolume_ValueChanged" LargeChange="0.1" Maximum="1" SmallChange="0.01" Value="0.5" />
+                    </StackPanel>
+
+
+
                 </Grid>
             </Border>
+
+
         </Grid>
+    </Border>
 
-
-        <!--Right Section-->
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2.5*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Ellipse Width="200" Height="200" Margin="0 15 0 -10" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                <Ellipse.RenderTransform>
-                    <RotateTransform x:Name="MyAnimatedTransform" Angle="0" />
-                </Ellipse.RenderTransform>
-                <Ellipse.Fill>
-                    <ImageBrush x:Name="img" ImageSource = "Images/singer.jpg"/>
-                </Ellipse.Fill>
-            </Ellipse>
-
-            <Border Grid.Row ="1" CornerRadius="20" Margin="10 5 10 10">
-                <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#30ad9a" Offset="0"/>
-                        <GradientStop Color="#18c274" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
-                </Border.Effect>
-                <TextBlock x:Name="infotextblock" Text="THÔNG TIN BÀI HÁT" TextWrapping="Wrap" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-        </Grid>
-    </Grid>
 </Window>
