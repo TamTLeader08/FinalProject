@@ -135,23 +135,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Users\\baohe\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\MP3APP\\TT6\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "projectUniqueName": "C:\\Users\\baohe\\source\\repos\\GiaBao3\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
       "projectName": "MP3_Final",
-      "projectPath": "C:\\Users\\admin\\Desktop\\MP3APP\\TT6\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\MP3APP\\TT6\\FinalProject\\Mp3\\MP3_Final\\obj\\",
+      "projectPath": "C:\\Users\\baohe\\source\\repos\\GiaBao3\\FinalProject\\Mp3\\MP3_Final\\MP3_Final.csproj",
+      "packagesPath": "C:\\Users\\baohe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\baohe\\source\\repos\\GiaBao3\\FinalProject\\Mp3\\MP3_Final\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\baohe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
