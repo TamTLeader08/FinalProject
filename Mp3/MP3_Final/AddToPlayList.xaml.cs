@@ -20,7 +20,7 @@ namespace MP3_Final
     /// </summary>
     public partial class AddToPlayList : Window
     {
-        public string playListPath = string.Empty;
+        public string playListPath = null;
 
         public AddToPlayList()
         {

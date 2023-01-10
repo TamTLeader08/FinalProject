@@ -61,7 +61,7 @@
                         <materialDesign:PackIcon Kind="Spotify" Margin="10 0 0 0" Width="50" Height="50" VerticalAlignment="Center" Foreground="{StaticResource color2}"/>
                         <TextBlock Text="Music Player" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="25" Foreground="{StaticResource color2}"/>
                     </StackPanel>
-                    <Button x:Name="Playlist" Style="{StaticResource menuButton}" Grid.Row="1">
+                    <Button x:Name="Home" Style="{StaticResource menuButton}" Grid.Row="1" Click="Home_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Home" Style="{StaticResource menuButtonTitle}"/>
@@ -254,7 +254,7 @@
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Search your song ..."
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                BorderThickness="0" />
+                                BorderThickness="0" TextChanged="searchTB_TextChanged" />
                             </Grid>
                         </materialDesign:ColorZone>
                         <!--ControlBar-->
